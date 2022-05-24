@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "geometry-shop": "apps/geometry-shop",
+    "geometry-shop-e2e": "apps/geometry-shop-e2e"
+  }
+}
