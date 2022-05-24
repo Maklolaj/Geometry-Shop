@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@geometry-shop/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@geometry-shop/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@geometry-shop/auth": ["libs/auth/src/index.ts"],
+      "@geometry-shop/data-models": ["libs/data-models/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
