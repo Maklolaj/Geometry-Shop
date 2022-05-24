@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Authenticate } from '@geometry-shop/data-models';
+import { Authenticate } from 'libs/data-models/src/lib/authenticate';
 
 @Component({
   selector: 'geometry-shop-login-form',
