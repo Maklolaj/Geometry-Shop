@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/geometry-shop",
         "index": "apps/geometry-shop/src/index.html",
@@ -17,7 +19,10 @@
           "apps/geometry-shop/src/favicon.ico",
           "apps/geometry-shop/src/assets"
         ],
-        "styles": ["apps/geometry-shop/src/styles.scss"],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/geometry-shop/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -85,7 +90,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/geometry-shop"],
+      "outputs": [
+        "coverage/apps/geometry-shop"
+      ],
       "options": {
         "jestConfig": "apps/geometry-shop/jest.config.ts",
         "passWithNoTests": true
