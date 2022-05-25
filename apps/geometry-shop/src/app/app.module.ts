@@ -10,6 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { authRoutes, AuthModule } from '@geometry-shop/auth';
 import { RouterModule } from '@angular/router';
+import { LayoutModule } from '@geometry-shop/layout';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,10 +18,11 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AuthModule,
     RouterModule.forRoot([{ path: 'auth', children: authRoutes }], {
       initialNavigation: 'enabled',
     }),
+    AuthModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
