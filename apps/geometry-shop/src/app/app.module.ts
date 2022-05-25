@@ -18,6 +18,9 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     BrowserAnimationsModule,
     AuthModule,
+    RouterModule.forRoot([{ path: 'auth', children: authRoutes }], {
+      initialNavigation: 'enabled',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

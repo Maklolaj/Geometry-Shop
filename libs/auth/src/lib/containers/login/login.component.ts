@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Authenticate } from 'libs/data-models/src/lib/authenticate';
+//import { Authenticate } from 'libs/data-models/src/lib/authenticate';
+import { Authenticate, User } from '@geometry-shop/data-models';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -14,10 +15,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login(authenticate: Authenticate) {
-    this.authService.login(authenticate).subscribe((response: Authenticate) => {
+    this.authService.login(authenticate).subscribe((response: User) => {
       if (response) {
         console.log(`Username: ${response.username} from api`);
-        console.log(`Password: ${response.password} from api`);
+        console.log(`Country: ${response.country} from api`);
       } else {
         console.log('Empty');
       }
