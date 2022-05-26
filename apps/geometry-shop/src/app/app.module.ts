@@ -18,9 +18,22 @@ import { LayoutModule } from '@geometry-shop/layout';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot([{ path: 'auth', children: authRoutes }], {
-      initialNavigation: 'enabled',
-    }),
+    RouterModule.forRoot(
+      [
+        { path: '', pathMatch: 'full', redirectTo: 'products' },
+        { path: 'auth', children: authRoutes },
+        {
+          path: 'products',
+          loadChildren: () =>
+            import('@geometry-shop/products').then(
+              (module) => module.ProductsModule
+            ),
+        },
+      ],
+      {
+        initialNavigation: 'enabled',
+      }
+    ),
     AuthModule,
     LayoutModule,
   ],

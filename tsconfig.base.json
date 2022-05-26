@@ -19,7 +19,8 @@
       "@geometry-shop/auth": ["libs/auth/src/index.ts"],
       "@geometry-shop/data-models": ["libs/data-models/src/index.ts"],
       "@geometry-shop/layout": ["libs/layout/src/index.ts"],
-      "@geometry-shop/material": ["libs/material/src/index.ts"]
+      "@geometry-shop/material": ["libs/material/src/index.ts"],
+      "@geometry-shop/products": ["libs/products/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -9,6 +9,7 @@
     "geometry-shop": "apps/geometry-shop",
     "geometry-shop-e2e": "apps/geometry-shop-e2e",
     "layout": "libs/layout",
-    "material": "libs/material"
+    "material": "libs/material",
+    "products": "libs/products"
   }
 }
