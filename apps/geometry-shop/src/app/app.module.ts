@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { authRoutes, AuthModule } from '@geometry-shop/auth';
+import { authRoutes, AuthModule, AuthGuard } from '@geometry-shop/auth';
 import { RouterModule } from '@angular/router';
 import { LayoutModule } from '@geometry-shop/layout';
 
@@ -28,6 +28,7 @@ import { LayoutModule } from '@geometry-shop/layout';
             import('@geometry-shop/products').then(
               (module) => module.ProductsModule
             ),
+          canActivate: [AuthGuard],
         },
       ],
       {

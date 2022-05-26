@@ -10,11 +10,21 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 export class AuthService {
   private userSubject$ = new BehaviorSubject<User>(null as any);
   user$ = this.userSubject$.asObservable();
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    const user = localStorage.getItem('user');
+    if (user) {
+      this.userSubject$.next(JSON.parse(user));
+    }
+  }
 
   login(authenticate: Authenticate): Observable<User> {
     return this.httpClient
       .post<User>('http://localhost:4200/api/login', authenticate)
-      .pipe(tap((user: User) => this.userSubject$.next(user)));
+      .pipe(
+        tap((user: User) => {
+          this.userSubject$.next(user);
+          localStorage.setItem('user', JSON.stringify(user));
+        })
+      );
   }
 }
