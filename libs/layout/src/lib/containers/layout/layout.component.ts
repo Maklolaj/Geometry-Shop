@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { empty, Observable, of } from 'rxjs';
 import { AuthService } from '@geometry-shop/auth';
 import { User } from '@geometry-shop/data-models';
 
@@ -15,5 +15,9 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit() {
     this.user$ = this.authService.user$;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

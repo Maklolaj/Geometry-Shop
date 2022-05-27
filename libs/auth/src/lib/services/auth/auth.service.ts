@@ -27,4 +27,9 @@ export class AuthService {
         })
       );
   }
+
+  logout(): void {
+    this.userSubject$.next(null as any);
+    localStorage.removeItem('user');
+  }
 }

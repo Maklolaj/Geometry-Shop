@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-//import { Authenticate } from 'libs/data-models/src/lib/authenticate';
 import { Authenticate, User } from '@geometry-shop/data-models';
 import { AuthService } from '../../services/auth/auth.service';
 
