@@ -1,3 +1,4 @@
 <geometry-shop-login-form
+  *ngIf="isLoggedOut$ | async"
   (submitForm)="login($event)"
 ></geometry-shop-login-form>

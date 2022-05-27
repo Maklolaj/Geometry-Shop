@@ -9,8 +9,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { authRoutes, AuthModule, AuthGuard } from '@geometry-shop/auth';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouterState } from '@angular/router';
 import { LayoutModule } from '@geometry-shop/layout';
+import { reduce } from 'rxjs';
+import { reducers } from '../../../../libs/auth/src/lib/state/auth';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +40,9 @@ import { LayoutModule } from '@geometry-shop/layout';
     ),
     AuthModule,
     LayoutModule,
+    StoreModule.forRoot({}),
+    StoreRouterConnectingModule.forRoot(),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
   providers: [],
   bootstrap: [AppComponent],

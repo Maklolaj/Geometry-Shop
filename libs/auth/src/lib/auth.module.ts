@@ -7,6 +7,9 @@ import { DataModelsModule } from '@geometry-shop/data-models';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '@geometry-shop/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './state/auth/auth.reducer';
 
 export const authRoutes: Route[] = [
   { path: 'login', component: LoginComponent },
@@ -20,6 +23,8 @@ export const authRoutes: Route[] = [
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
+    StoreModule.forFeature('auth', authReducer),
+    //EffectsModule.forFeature([AuthEffects])
   ],
   exports: [LoginFormComponent],
   declarations: [LoginComponent, LoginFormComponent],
