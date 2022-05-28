@@ -1,16 +1,46 @@
 <div>HELOO</div>
-<ngt-canvas>
-  <ngt-mesh
-    (pointerover)="hovered = true"
-    (pointerout)="hovered = false"
-    (click)="active = !active"
-    [scale]="active ? 1.5 : 1"
-    (beforeRender)="onBeforeRender($event.object)"
-  >
-    <ngt-box-geometry></ngt-box-geometry>
-    <ngt-mesh-standard-material
-      [color]="hovered ? 'turquoise' : 'tomato'"
-    ></ngt-mesh-standard-material>
-  </ngt-mesh>
-</ngt-canvas>
-<div>HELOO</div>
+
+<div class="product-container">
+  <ngt-canvas [camera]="{ position: [1, 2, 3] }">
+    <ngt-ambient-light></ngt-ambient-light>
+    <ngt-spot-light [position]="[4, 4, 4]"></ngt-spot-light>
+
+    <ngt-mesh
+      (pointerover)="hovered = true"
+      (pointerout)="hovered = false"
+      (click)="active = !active"
+      [scale]="active ? 1.5 : 1"
+      (beforeRender)="onBeforeRender($event.object)"
+      [position]="[0, -1, 0]"
+    >
+      <ngt-box-geometry></ngt-box-geometry>
+      <!-- <ngt-cylinder-geometry></ngt-cylinder-geometry> -->
+      <!-- <ngt-plane-geometry></ngt-plane-geometry>  //plaska geometria -->
+      <!-- <ngt-capsule-geometry></ngt-capsule-geometry> -->
+      <!-- <ngt-circle-geometry></ngt-circle-geometry> plaskie -->
+      <!-- <ngt-cone-geometry></ngt-cone-geometry> stozek -->
+      <!-- <ngt-dodecahedron-geometry></ngt-dodecahedron-geometry> Dwunastoscian-->
+      <!-- <ngt-extrude-geometry></ngt-extrude-geometry> ??-->
+      <!-- <ngt-icosahedron-geometry></ngt-icosahedron-geometry> dwudziestościan-->
+      <!-- <ngt-lathe-geometry></ngt-lathe-geometry> romb obrobione-->
+      <!-- <ngt-octahedron-geometry></ngt-octahedron-geometry> oktaedr (romb)-->
+      <!-- <ngt-tube-geometry></ngt-tube-geometry> powierchnaia czesci tuby-->
+      <!-- <ngt-ring-geometry></ngt-ring-geometry> pierscien plaski -->
+      <!-- <ngt-torus-geometry></ngt-torus-geometry> pierscien wykuply-->
+
+      <ngt-mesh-standard-material
+        [color]="hovered ? 'turquoise' : 'tomato'"
+      ></ngt-mesh-standard-material>
+    </ngt-mesh>
+
+    <ngt-mesh [position]="[0, 1, -1]">
+      <ngt-mesh-standard-material [color]="'grey'"></ngt-mesh-standard-material>
+      <ngt-cylinder-geometry></ngt-cylinder-geometry>
+    </ngt-mesh>
+  </ngt-canvas>
+  <!-- <ngt-stats></ngt-stats> FPS-->
+  <div class="product-container__options">
+    <span>CONTENT</span>
+    <geometry-shop-product-options></geometry-shop-product-options>
+  </div>
+</div>

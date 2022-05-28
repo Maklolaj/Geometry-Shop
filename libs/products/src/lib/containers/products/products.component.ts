@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgtVector3 } from '@angular-three/core';
-import { Mesh } from 'three';
+import { Curve, Mesh } from 'three';
 
 @Component({
   selector: 'geometry-shop-products',
@@ -15,7 +15,10 @@ export class ProductsComponent {
   active = false;
 
   onBeforeRender(cube: Mesh) {
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    cube.rotateY(0.01);
+    cube.rotateX(0.01);
+    // cube.rotation.x += 0.01;
+    // cube.rotation.y += 0.01;
+    cube.rotateZ(0.01);
   }
 }

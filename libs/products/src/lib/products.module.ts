@@ -4,30 +4,35 @@ import { RouterModule } from '@angular/router';
 import { ProductsComponent } from './containers/products/products.component';
 import { NgtMeshModule } from '@angular-three/core/meshes';
 import { NgtMeshStandardMaterialModule } from '@angular-three/core/materials';
-import { NgtBoxGeometryModule } from '@angular-three/core/geometries';
+//import { NgtTes } from '@angular-three/soba/staging';
+import {
+  NgtBoxGeometryModule,
+  NgtPlaneGeometryModule,
+  NgtCylinderGeometryModule,
+  NgtCapsuleGeometryModule,
+  NgtCircleGeometryModule,
+  NgtConeGeometryModule,
+  NgtDodecahedronGeometryModule,
+  NgtExtrudeGeometryModule,
+  NgtIcosahedronGeometryModule,
+  NgtLatheGeometryModule,
+  NgtOctahedronGeometryModule,
+  NgtTubeGeometryModule,
+  NgtRingGeometryModule,
+  NgtTorusGeometryModule,
+  NgtWireframeGeometryModule,
+} from '@angular-three/core/geometries';
 import {
   NgtAmbientLightModule,
   NgtSpotLightModule,
   NgtPointLightModule,
 } from '@angular-three/core/lights';
-import {
-  Store,
-  StoreFeatureModule,
-  StoreModule,
-  StoreRootModule,
-} from '@ngrx/store';
-import { authReducer } from '../../../auth/src/lib/state/auth/auth.reducer';
-import {
-  prodcutInitialState,
-  productReducer,
-  reducerss,
-} from './products.reducer';
-import { authRoutes, AuthModule, AuthGuard } from '@geometry-shop/auth';
-import { reducers } from 'libs/auth/src/lib/state/auth';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { NgtCanvasModule } from '@angular-three/core';
-
+import { StoreModule } from '@ngrx/store';
+import { NgtStatsModule } from '@angular-three/core/stats';
+import { productReducer } from './products.reducer';
+import { NgtCanvasModule, NgtCamera } from '@angular-three/core';
+import { ProductOptionsComponent } from './components/product-options/product-options.component';
+import { MaterialModule } from '@geometry-shop/material';
 @NgModule({
   imports: [
     CommonModule,
@@ -36,14 +41,31 @@ import { NgtCanvasModule } from '@angular-three/core';
     NgtAmbientLightModule,
     NgtSpotLightModule,
     NgtPointLightModule,
+
     NgtBoxGeometryModule,
+    NgtPlaneGeometryModule,
+    NgtCylinderGeometryModule,
+    NgtCapsuleGeometryModule,
+    NgtCircleGeometryModule,
+    NgtConeGeometryModule,
+    NgtDodecahedronGeometryModule,
+    NgtExtrudeGeometryModule,
+    NgtIcosahedronGeometryModule,
+    NgtLatheGeometryModule,
+    NgtOctahedronGeometryModule,
+    NgtTubeGeometryModule,
+    NgtRingGeometryModule,
+    NgtTorusGeometryModule,
+
     NgtMeshStandardMaterialModule,
+    //NgtSobaStarsModule,
+    NgtStatsModule,
     RouterModule.forChild([{ path: '', component: ProductsComponent }]),
     StoreModule.forFeature('products', productReducer),
+    MaterialModule,
     //StoreModule.forFeature('auth', reducers),
   ],
-  declarations: [ProductsComponent],
+  declarations: [ProductsComponent, ProductOptionsComponent],
   exports: [ProductsComponent],
-  providers: [AuthGuard],
 })
 export class ProductsModule {}

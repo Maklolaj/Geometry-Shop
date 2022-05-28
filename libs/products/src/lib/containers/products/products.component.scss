@@ -1,7 +1,18 @@
 
-  div {
-    text-align: center;
-  }
-  .ngt-canvas {
-    height: 400px !important;
+
+  .product-container {
+    display: flex;
+    flex-flow: column;
+    width: 100%
+    height 100%;
+
+    &__options {
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+
+    .ngt-canvas {
+        height: 500px;
+        border: 2px solid;
+    }
   }
