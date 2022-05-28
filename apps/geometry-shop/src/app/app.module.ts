@@ -14,6 +14,15 @@ import { LayoutModule } from '@geometry-shop/layout';
 import { reduce } from 'rxjs';
 import { reducers } from '../../../../libs/auth/src/lib/state/auth';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { NgtMeshModule } from '@angular-three/core/meshes';
+import { NgtCanvasModule } from '@angular-three/core';
+import { NgtMeshStandardMaterialModule } from '@angular-three/core/materials';
+import { NgtBoxGeometryModule } from '@angular-three/core/geometries';
+import {
+  NgtAmbientLightModule,
+  NgtSpotLightModule,
+  NgtPointLightModule,
+} from '@angular-three/core/lights';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +30,14 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgtCanvasModule,
+    NgtMeshModule,
+    NgtAmbientLightModule,
+    NgtSpotLightModule,
+    NgtPointLightModule,
+    NgtBoxGeometryModule,
+    NgtMeshStandardMaterialModule,
+
     RouterModule.forRoot(
       [
         { path: '', pathMatch: 'full', redirectTo: 'products' },
