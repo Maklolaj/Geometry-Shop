@@ -19,5 +19,5 @@ export class CustomVirtualScrollStrategy extends FixedSizeVirtualScrollStrategy 
   ],
 })
 export class ProductListComponent {
-  items = Array.from({ length: 100000 }).map((_, i) => `Item #${i}`);
+  items = Array.from({ length: 40 }).map((_, i) => `Item #${i}`);
 }

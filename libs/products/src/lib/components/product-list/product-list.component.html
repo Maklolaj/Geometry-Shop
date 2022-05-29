@@ -4,8 +4,10 @@
     class="product-viewport"
     orientation="horizontal"
   >
-    <div *cdkVirtualFor="let item of items" class="product-item">
-      {{ item }}
-    </div>
+    <geometry-shop-product-item
+      *cdkVirtualFor="let item of items"
+      class="product-item"
+    >
+    </geometry-shop-product-item>
   </cdk-virtual-scroll-viewport>
 </div>

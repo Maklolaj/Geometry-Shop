@@ -34,6 +34,7 @@ import { NgtCanvasModule, NgtCamera } from '@angular-three/core';
 import { ProductOptionsComponent } from './components/product-options/product-options.component';
 import { MaterialModule } from '@geometry-shop/material';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductItemComponent } from './components/product-list/containers/product-item/product-item.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -70,6 +71,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
     ProductsComponent,
     ProductOptionsComponent,
     ProductListComponent,
+    ProductItemComponent,
   ],
   exports: [ProductsComponent],
 })
