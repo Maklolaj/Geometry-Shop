@@ -33,6 +33,7 @@ import { productReducer } from './products.reducer';
 import { NgtCanvasModule, NgtCamera } from '@angular-three/core';
 import { ProductOptionsComponent } from './components/product-options/product-options.component';
 import { MaterialModule } from '@geometry-shop/material';
+import { ProductListComponent } from './components/product-list/product-list.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -65,7 +66,11 @@ import { MaterialModule } from '@geometry-shop/material';
     MaterialModule,
     //StoreModule.forFeature('auth', reducers),
   ],
-  declarations: [ProductsComponent, ProductOptionsComponent],
+  declarations: [
+    ProductsComponent,
+    ProductOptionsComponent,
+    ProductListComponent,
+  ],
   exports: [ProductsComponent],
 })
 export class ProductsModule {}

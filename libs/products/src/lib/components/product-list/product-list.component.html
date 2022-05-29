@@ -1,0 +1,11 @@
+<div>Product List</div>
+<div class="cdk-virtual-scroll-data-source-product">
+  <cdk-virtual-scroll-viewport
+    class="product-viewport"
+    orientation="horizontal"
+  >
+    <div *cdkVirtualFor="let item of items" class="product-item">
+      {{ item }}
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>
