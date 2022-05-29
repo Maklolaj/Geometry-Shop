@@ -3,4 +3,10 @@
     <mat-label>Size</mat-label>
     <input matInput type="number" placeholder="0" />
   </mat-form-field>
+  <input
+    [(colorPicker)]="color"
+    [style.background]="color"
+    (colorPickerChange)="color = $event"
+  />
+  <div>{{ color }}</div>
 </div>

@@ -7,4 +7,6 @@ import { Mesh } from 'three';
   templateUrl: './product-options.component.html',
   styleUrls: ['./product-options.component.scss'],
 })
-export class ProductOptionsComponent {}
+export class ProductOptionsComponent {
+  color = 'red';
+}

@@ -35,6 +35,8 @@ import { ProductOptionsComponent } from './components/product-options/product-op
 import { MaterialModule } from '@geometry-shop/material';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductItemComponent } from './components/product-list/containers/product-item/product-item.component';
+import { ColorPickerModule } from 'ngx-color-picker';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -65,6 +67,7 @@ import { ProductItemComponent } from './components/product-list/containers/produ
     RouterModule.forChild([{ path: '', component: ProductsComponent }]),
     StoreModule.forFeature('products', productReducer),
     MaterialModule,
+    ColorPickerModule,
     //StoreModule.forFeature('auth', reducers),
   ],
   declarations: [
