@@ -1,4 +1,4 @@
-import { ConsoleLogger, Controller, Get, Post, Req } from '@nestjs/common';
+import { Body, ConsoleLogger, Controller, Get, Param, Patch, Post, Req } from '@nestjs/common';
 import { Message, User, Authenticate } from '@geometry-shop/api-interfaces';
 import { AppService } from './app.service';
 
@@ -16,8 +16,13 @@ export class AppController {
     return this.appService.readUsers();
   }
 
-  @Post('login')
+  @Post('login') // ADD DTOS
   loginUser(@Req() request: any): User {
     return this.appService.login(request.body);
+  }
+
+  @Patch('/:id')
+  updateItem(@Body() body:{price: number}, @Param('id') id:string ){
+
   }
 }
