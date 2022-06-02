@@ -1,8 +1,11 @@
-import { ProductsRepository } from './products.repository'
-import { UpdateProductRequest } from './requestDto/updateProduct.dto'
-import { Product } from './schemas/product.schema'
+import { ProductsRepository } from './products.repository';
+import { UpdateProductRequest } from './requestDto/updateProduct.dto';
+import { Injectable, Logger } from "@nestjs/common";
+import { Product } from './schemas/product.schema';
 import { v4 as uuidv4 } from 'uuid';
 import { CreateProductRequest } from './requestDto/createProduct.dto';
+
+@Injectable()
 export class ProductsService {
     constructor(private readonly productsRepository: ProductsRepository) {}
 
