@@ -1,7 +1,8 @@
 import { ProductsRepository } from './products.repository'
 import { UpdateProductRequest } from './requestDto/updateProduct.dto'
 import { Product } from './schemas/product.schema'
-
+import { v4 as uuidv4 } from 'uuid';
+import { CreateProductRequest } from './requestDto/createProduct.dto';
 export class ProductsService {
     constructor(private readonly productsRepository: ProductsRepository) {}
 
@@ -13,9 +14,9 @@ export class ProductsService {
         return this.productsRepository.find({})
     }
 
-    async createProduct(product: Product): Promise<Product> {
+    async createProduct(product: CreateProductRequest): Promise<Product> {
         return this.productsRepository.create({
-            productId: product.productId,
+            productId: uuidv4(),
             name: product.name,
             color: product.color,
             price: product.price,
