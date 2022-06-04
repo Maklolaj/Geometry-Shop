@@ -29,13 +29,13 @@ import {
 } from '@angular-three/core/lights';
 import { StoreModule } from '@ngrx/store';
 import { NgtStatsModule } from '@angular-three/core/stats';
-import { productReducer } from './products.reducer';
 import { NgtCanvasModule, NgtCamera } from '@angular-three/core';
 import { ProductOptionsComponent } from './components/product-options/product-options.component';
 import { MaterialModule } from '@geometry-shop/material';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductItemComponent } from './components/product-list/containers/product-item/product-item.component';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { productsReducer } from './state/products/product.reducer';
 
 @NgModule({
   imports: [
@@ -65,7 +65,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
     //NgtSobaStarsModule,
     NgtStatsModule,
     RouterModule.forChild([{ path: '', component: ProductsComponent }]),
-    StoreModule.forFeature('products', productReducer),
+    StoreModule.forFeature('products', productsReducer),
     MaterialModule,
     ColorPickerModule,
     //StoreModule.forFeature('auth', reducers),
