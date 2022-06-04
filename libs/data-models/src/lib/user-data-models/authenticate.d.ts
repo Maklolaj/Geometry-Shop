@@ -1,4 +1,4 @@
 export interface Authenticate {
-  username: string;
+  name: string;
   password: string;
 }

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   login(authenticate: Authenticate) {
     this.authService.login(authenticate).subscribe((user: User) => {
       if (user) {
-        console.log(`Username: ${user.username} from api`);
+        console.log(`Username: ${user.name} from api`);
         console.log(`Country: ${user.country} from api`);
         this.store.dispatch(login({ user }));
       } else {

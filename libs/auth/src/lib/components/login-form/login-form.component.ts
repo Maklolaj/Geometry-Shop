@@ -18,7 +18,7 @@ export class LoginFormComponent {
 
   login() {
     this.submitForm.emit({
-      username: this.loginForm.value.username,
+      name: this.loginForm.value.username,
       password: this.loginForm.value.password,
     } as Authenticate);
   }

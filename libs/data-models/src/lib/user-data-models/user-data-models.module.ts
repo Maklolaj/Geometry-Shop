@@ -6,4 +6,4 @@ export { User } from './user';
 @NgModule({
   imports: [CommonModule],
 })
-export class DataModelsModule {}
+export class UserModelsModule {}

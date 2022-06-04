@@ -19,7 +19,7 @@ export class AuthService {
 
   login(authenticate: Authenticate): Observable<User> {
     return this.httpClient
-      .post<User>('http://localhost:4200/api/login', authenticate)
+      .post<User>('http://localhost:4200/api/user/login', authenticate)
       .pipe(
         tap((user: User) => {
           this.userSubject$.next(user);

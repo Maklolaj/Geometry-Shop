@@ -10,19 +10,4 @@ export class AppController {
   getData(): Message {
     return this.appService.getData();
   }
-
-  @Get('users')
-  readUsers(): User[] {
-    return this.appService.readUsers();
-  }
-
-  @Post('login') // ADD DTOS
-  loginUser(@Req() request: any): User {
-    return this.appService.login(request.body);
-  }
-
-  @Patch('/:id')
-  updateItem(@Body() body:{price: number}, @Param('id') id:string ){
-
-  }
 }
