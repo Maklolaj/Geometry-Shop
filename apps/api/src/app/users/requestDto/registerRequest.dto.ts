@@ -1,4 +1,4 @@
-export class SuccessAuthResponse {
+export class RegisterRequest {
     name: string;
 
     country: string;
