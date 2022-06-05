@@ -36,6 +36,8 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductItemComponent } from './components/product-list/containers/product-item/product-item.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { productsReducer } from './state/products/product.reducer';
+import { ProductResolver } from './state/products/product.resolver';
+import { ProductsService } from './services/products/products.service';
 
 @NgModule({
   imports: [
@@ -64,7 +66,7 @@ import { productsReducer } from './state/products/product.reducer';
     NgtMeshStandardMaterialModule,
     //NgtSobaStarsModule,
     NgtStatsModule,
-    RouterModule.forChild([{ path: '', component: ProductsComponent }]),
+    RouterModule.forChild([{ path: '', component: ProductsComponent, resolve: {productsData: ProductResolver} }]),
     StoreModule.forFeature('products', productsReducer),
     MaterialModule,
     ColorPickerModule,
@@ -77,5 +79,6 @@ import { productsReducer } from './state/products/product.reducer';
     ProductItemComponent,
   ],
   exports: [ProductsComponent],
+  providers: [ ProductsService, ProductResolver],
 })
 export class ProductsModule {}
