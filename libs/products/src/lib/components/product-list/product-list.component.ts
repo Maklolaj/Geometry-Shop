@@ -10,7 +10,7 @@ import {
 } from '@angular/cdk/scrolling';
 import { Product } from '@geometry-shop/data-models';
 import { select, Store } from '@ngrx/store';
-import { selectAllProducts, xd } from '../../state/products/product.selectors';
+import { selectAllProducts } from '../../state/products/product.selectors';
 import { Observable, of } from 'rxjs';
 import { ProductState } from '../../state/products/product.state';
 import { selectAll } from '../../state/products/product.reducer';
@@ -39,8 +39,7 @@ export class ProductListComponent implements OnInit {
   products$: Observable<Product[]> = of();
 
   ngOnInit() {
-    this.products$ = this.store.pipe(select(xd));
+    this.products$ = this.store.pipe(select(selectAllProducts));
     this.products$.subscribe((a) => console.log(a));
-    console.log('xd');
   }
 }

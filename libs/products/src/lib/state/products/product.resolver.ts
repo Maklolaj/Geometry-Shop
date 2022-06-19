@@ -33,34 +33,20 @@ export class ProductResolver implements Resolve<any> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
-    // this.store.pipe(
-    //     select(selectAllProducts), // 'products'
-    //     tap( products => {
-    //         if(products.length === 0) {
-    //             this.productService.getAllProducts()
-    //             .pipe(
-    //                 catchError((error) => {
-    //                     console.log(error);
-    //                     return EMPTY;
-    //                 }),
-    //                 map( (products:Product[]) => {
-    //                     this.store.dispatch(retrieveProductList({products}));
-
-    //                 })
-    //             )
-    //         }
-    //         return products;
-    //     })
-    // )
-    // const a:Product[] = []
-    // return of(a);
     this.initProductsData();
     return this.waitForProfileDataToLoad();
   }
 
   initProductsData(): void {
+    let productsLoaded = false;
+    this.store.pipe(select(selectAllProducts)).pipe(take(1), map( (products) =>
+      { return products.length > 0}
+    )).subscribe ( (areLoaded) => {
+      productsLoaded = areLoaded
+    })
+
     this.store.pipe(take(1)).subscribe((store) => {
-      //if (store.products?.length === 0) {
+      if (!productsLoaded) {
       this.productService
         .getAllProducts()
         .toPromise()
@@ -70,18 +56,11 @@ export class ProductResolver implements Resolve<any> {
             ? this.store.dispatch(retrieveProductList({ products }))
             : null;
         });
-      //}
+      }
     });
   }
 
-  waitForProfileDataToLoad(): Observable<any> {
-    //should return Prodcut
-    // return this.store.select('products').pipe(
-    //     filter(products => !!products),
-    //     take(1),
-    // )
-    //return this.store.pipe(select(selectAllProducts));
-    let a: Product[] = [];
-    return of(a);
+  waitForProfileDataToLoad(): Observable<Product[]> {
+    return this.store.pipe(select(selectAllProducts)).pipe(take(1));
   }
 }
