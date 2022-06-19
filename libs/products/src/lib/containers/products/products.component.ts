@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { NgtVector3 } from '@angular-three/core';
 import { Curve, Mesh } from 'three';
+import { Product } from '@geometry-shop/data-models';
 
 @Component({
   selector: 'geometry-shop-products',
@@ -8,11 +9,17 @@ import { Curve, Mesh } from 'three';
   styleUrls: ['./products.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit{
   @Input() position?: NgtVector3;
+
+  //@Input() productList?: Product[];
 
   hovered = false;
   active = false;
+
+  ngOnInit() {
+    //console.log(this.productList)
+  }
 
   onBeforeRender(cube: Mesh) {
     cube.rotateY(0.01);

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Product } from '@geometry-shop/data-models';
 
 @Component({
   selector: 'geometry-shop-product-item',
@@ -6,5 +7,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   styleUrls: ['./product-item.component.scss'],
 })
 export class ProductItemComponent {
-  //TODO change detection on push?
+   //TODO change detection on push?
+  @Input() product!: Product;
+
+
 }

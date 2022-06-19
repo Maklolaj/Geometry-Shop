@@ -5,8 +5,9 @@
     orientation="horizontal"
   >
     <geometry-shop-product-item
-      *cdkVirtualFor="let item of items"
+      *cdkVirtualFor="let product of products$ | async;"
       class="product-item"
+      [product] = 'product'
     >
     </geometry-shop-product-item>
   </cdk-virtual-scroll-viewport>

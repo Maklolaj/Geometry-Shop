@@ -1,8 +1,8 @@
 <div>Product item</div>
-<mat-card class="product-card">
+<mat-card *ngIf="product" class="product-card">
   <mat-card-header>
     <mat-icon>build</mat-icon>
-    <mat-card-title>Geometry Name</mat-card-title>
+    <mat-card-title>{{product.name}}</mat-card-title>
   </mat-card-header>
   <img
     class="product-card__image"
@@ -11,14 +11,11 @@
   />
   <mat-card-content>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus laoreet
-      nunc arcu, in vulputate dui ultricies vitae. Aliquam sollicitudin lacus id
-      sollicitudin tempus. Vestibulum odio metus, congue a lacus sed, suscipit
-      ullamcorper libero. I n eu consectetur risus. Duis volutpat lectus nunc.
+      {{product.describtion}}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-button>SHOW</button>
+    <button mat-button>ADD</button>
   </mat-card-actions>
 </mat-card>
