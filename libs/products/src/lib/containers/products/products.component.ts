@@ -22,6 +22,8 @@ export class ProductsComponent implements OnInit{
   hovered = false;
   active = false;
 
+  selectedProductColor = 'tomato';
+
   ngOnInit() {
    
   }
@@ -32,5 +34,9 @@ export class ProductsComponent implements OnInit{
     // cube.rotation.x += 0.01;
     // cube.rotation.y += 0.01;
     cube.rotateZ(0.01);
+  }
+
+  public selectedColor(color: string): void {
+    this.selectedProductColor = color;
   }
 }

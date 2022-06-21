@@ -31,7 +31,7 @@
       <ngt-torus-geometry *ngSwitchCase="'torus'"></ngt-torus-geometry> <!--  pierscien wykuply -->
 
       <ngt-mesh-standard-material
-        [color]="hovered ? 'turquoise' : 'tomato'"
+        [color]="selectedProductColor" 
       ></ngt-mesh-standard-material>
     </ngt-mesh>
 
@@ -43,7 +43,7 @@
   <!-- <ngt-stats></ngt-stats> FPS-->
   <div class="product-container__options">
     <span *ngIf="currentProduct">Currently selected: {{  (currentProduct|async)?.name  }}</span>
-    <geometry-shop-product-options></geometry-shop-product-options>
+    <geometry-shop-product-options (selectedColor)="selectedColor($event)"></geometry-shop-product-options>
   </div>
 </div>
 <geometry-shop-product-list></geometry-shop-product-list>
