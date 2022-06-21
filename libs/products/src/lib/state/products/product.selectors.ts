@@ -26,5 +26,5 @@ export const selectCurrentProductId = createSelector(
 export const selectCurrentProduct = createSelector(
   selectProductEntities,
   selectCurrentProductId,
-  (productEntities, productId) => productEntities[productId]
+  (productEntities, productId) => productEntities[productId]!
 );

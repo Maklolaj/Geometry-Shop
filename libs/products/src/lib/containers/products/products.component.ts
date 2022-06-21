@@ -2,6 +2,10 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { NgtVector3 } from '@angular-three/core';
 import { Curve, Mesh } from 'three';
 import { Product } from '@geometry-shop/data-models';
+import { ProductState } from '../../state/products/product.state';
+import { select, Store } from '@ngrx/store';
+import { Observable, take } from 'rxjs';
+import { selectCurrentProduct } from '../../state/products/product.selectors';
 
 @Component({
   selector: 'geometry-shop-products',
@@ -12,13 +16,14 @@ import { Product } from '@geometry-shop/data-models';
 export class ProductsComponent implements OnInit{
   @Input() position?: NgtVector3;
 
-  //@Input() productList?: Product[];
+  currentProduct: Observable<Product> = this.store.pipe(select(selectCurrentProduct));
+  constructor(private store: Store<ProductState>) {}
 
   hovered = false;
   active = false;
 
   ngOnInit() {
-    //console.log(this.productList)
+   
   }
 
   onBeforeRender(cube: Mesh) {

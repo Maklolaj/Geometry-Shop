@@ -20,8 +20,7 @@ export class ProductItemComponent {
   showProduct(productId: string): void {
     console.log(productId)
     this.store.dispatch(selectProductId({ productId }))
-    this.store.pipe(take(1),select(selectCurrentProduct)).subscribe( (x) =>{
-      console.log(x)
-    })
   }
+
+  
 }

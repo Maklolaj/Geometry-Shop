@@ -12,21 +12,23 @@
       [scale]="active ? 1.5 : 1"
       (beforeRender)="onBeforeRender($event.object)"
       [position]="[0, -1, 0]"
+      [ngSwitch]="(currentProduct|async)?.name"
     >
-      <ngt-box-geometry></ngt-box-geometry>
-      <!-- <ngt-cylinder-geometry></ngt-cylinder-geometry> -->
-      <!-- <ngt-plane-geometry></ngt-plane-geometry>  //plaska geometria -->
-      <!-- <ngt-capsule-geometry></ngt-capsule-geometry> -->
-      <!-- <ngt-circle-geometry></ngt-circle-geometry> plaskie -->
-      <!-- <ngt-cone-geometry></ngt-cone-geometry> stozek -->
-      <!-- <ngt-dodecahedron-geometry></ngt-dodecahedron-geometry> Dwunastoscian-->
-      <!-- <ngt-extrude-geometry></ngt-extrude-geometry> ??-->
-      <!-- <ngt-icosahedron-geometry></ngt-icosahedron-geometry> dwudziestościan-->
-      <!-- <ngt-lathe-geometry></ngt-lathe-geometry> romb obrobione-->
-      <!-- <ngt-octahedron-geometry></ngt-octahedron-geometry> oktaedr (romb)-->
-      <!-- <ngt-tube-geometry></ngt-tube-geometry> powierchnaia czesci tuby-->
-      <!-- <ngt-ring-geometry></ngt-ring-geometry> pierscien plaski -->
-      <!-- <ngt-torus-geometry></ngt-torus-geometry> pierscien wykuply-->
+      <ngt-box-geometry *ngSwitchCase="'box'"></ngt-box-geometry>
+      <ngt-cylinder-geometry *ngSwitchCase="'cylinder'"></ngt-cylinder-geometry>
+
+      <ngt-plane-geometry *ngSwitchCase="'cylinder'"></ngt-plane-geometry>  <!--plaska geometria -->
+      <ngt-capsule-geometry *ngSwitchCase="'capsule'"></ngt-capsule-geometry>
+      <ngt-circle-geometry *ngSwitchCase="'circle'"></ngt-circle-geometry> <!-- plaskie -->
+      <ngt-cone-geometry *ngSwitchCase="'cone'"></ngt-cone-geometry> <!-- stozek -->
+      <ngt-dodecahedron-geometry *ngSwitchCase="'dodecahedron'"></ngt-dodecahedron-geometry> <!-- Dwunastoscian-->
+      <ngt-extrude-geometry *ngSwitchCase="'extrude'"></ngt-extrude-geometry> <!-- ??-->
+      <ngt-icosahedron-geometry *ngSwitchCase="'icosahedron'"></ngt-icosahedron-geometry> <!--  dwudziestościan-->
+      <ngt-lathe-geometry *ngSwitchCase="'lathe'"></ngt-lathe-geometry> <!--  romb obrobione-->
+      <ngt-octahedron-geometry *ngSwitchCase="'octahedron'"></ngt-octahedron-geometry> <!--  oktaedr (romb)-->
+      <ngt-tube-geometry *ngSwitchCase="'tube'"></ngt-tube-geometry> <!--  powierchnaia czesci tuby-->
+      <ngt-ring-geometry *ngSwitchCase="'ring'"></ngt-ring-geometry> <!--  pierscien plaski -->
+      <ngt-torus-geometry *ngSwitchCase="'torus'"></ngt-torus-geometry> <!--  pierscien wykuply -->
 
       <ngt-mesh-standard-material
         [color]="hovered ? 'turquoise' : 'tomato'"
@@ -40,7 +42,7 @@
   </ngt-canvas>
   <!-- <ngt-stats></ngt-stats> FPS-->
   <div class="product-container__options">
-    <span>CONTENT</span>
+    <span *ngIf="currentProduct">Currently selected: {{  (currentProduct|async)?.name  }}</span>
     <geometry-shop-product-options></geometry-shop-product-options>
   </div>
 </div>
