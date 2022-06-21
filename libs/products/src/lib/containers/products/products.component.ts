@@ -39,4 +39,8 @@ export class ProductsComponent implements OnInit{
   public selectedColor(color: string): void {
     this.selectedProductColor = color;
   }
+
+  public selectedSize(size: number): void {
+    console.log(size);
+  }
 }

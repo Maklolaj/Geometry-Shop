@@ -11,11 +11,19 @@ export class ProductOptionsComponent {
   color = 'red';
 
   @Output() 
-  selectedColor: EventEmitter<any> = new EventEmitter();
+  selectedColor: EventEmitter<string> = new EventEmitter();
+
+  @Output()
+  selectedSize: EventEmitter<number> = new EventEmitter();
+
 
   public colorChanged(colorName: string): string {
     this.color = colorName
     this.selectedColor.emit(colorName);
     return colorName
+  }
+
+  public productSizeChanged(productSize: any): void {
+    this.selectedSize.emit(productSize.target.value);
   }
 }

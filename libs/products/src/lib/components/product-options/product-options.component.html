@@ -1,7 +1,8 @@
 <div class="product-options">
   <mat-form-field appearance="fill" floatLabel="always">
     <mat-label>Size</mat-label>
-    <input matInput type="number" placeholder="0" />
+    <input matInput type="number" placeholder="0"
+    (change)="productSizeChanged($event)"/>
   </mat-form-field>
   <input
     [(colorPicker)]="color"
