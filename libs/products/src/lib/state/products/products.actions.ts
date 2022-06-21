@@ -11,3 +11,12 @@ export const selectProductId = createAction(
     "[Select Product Effect] Select product",
     props<{productId: string}>()
 );
+
+export const addToBasket = createAction(
+    "[Add to basket Effect] Add to basket",
+    props<{product: Product}>()
+);
+
+export const clearBasket = createAction(
+    "[Clear basket Effect] Clear basket"      
+);

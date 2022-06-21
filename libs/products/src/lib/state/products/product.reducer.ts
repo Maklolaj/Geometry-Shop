@@ -5,6 +5,7 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 export interface ProductsState extends EntityState<Product> {
   selectedProductId: string;
+  basket: Product[];
 }
 
 export const adapter: EntityAdapter<Product> = createEntityAdapter<Product>({
@@ -14,6 +15,7 @@ export const adapter: EntityAdapter<Product> = createEntityAdapter<Product>({
 
 export const initialProductsState: ProductsState = adapter.getInitialState({
   selectedProductId: '',
+  basket: [],
 });
 
 export const productsReducer = createReducer(
@@ -24,6 +26,14 @@ export const productsReducer = createReducer(
   on(ProductActions.selectProductId, (state, { productId }) => {
     return { ...state, selectedProductId: productId }
   }),
+  on(ProductActions.addToBasket, (state, { product }) => {
+    let newBasket = state.basket;
+    newBasket.push(product)
+    return {...state, basket: newBasket }
+  }),
+  on(ProductActions.clearBasket, (state) => {
+    return {...state, basket: [] }
+  })
 );
 
 // Selectors
