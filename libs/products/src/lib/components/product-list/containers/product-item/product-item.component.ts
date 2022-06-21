@@ -17,10 +17,14 @@ export class ProductItemComponent {
   constructor(private readonly store: Store<ProductState>,) {  
   }
 
-  showProduct(productId: string): void {
+  public showProduct(productId: string): void {
     console.log(productId)
     this.store.dispatch(selectProductId({ productId }))
   }
 
-  
+  public addToBasket(product: Product): void {
+    // this.store.dispatch(addToBasket({product}));
+  }
+
+
 }

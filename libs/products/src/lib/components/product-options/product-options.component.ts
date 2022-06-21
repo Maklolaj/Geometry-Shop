@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgtVector3 } from '@angular-three/core';
 import { Mesh } from 'three';
+import { Observable } from 'rxjs';
+import { ProductState } from '../../state/products/product.state';
+import { select, Store } from '@ngrx/store';
 
 @Component({
   selector: 'geometry-shop-product-options',
@@ -10,12 +13,15 @@ import { Mesh } from 'three';
 export class ProductOptionsComponent {
   color = 'red';
 
+  // productsBasket: Observable<number> = this.store.pipe(select(selectBasketBalance));
+
   @Output() 
   selectedColor: EventEmitter<string> = new EventEmitter();
 
   @Output()
   selectedSize: EventEmitter<number> = new EventEmitter();
 
+  constructor(private store: Store<ProductState>) {}
 
   public colorChanged(colorName: string): string {
     this.color = colorName

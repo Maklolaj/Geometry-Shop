@@ -17,6 +17,7 @@ export class ProductsComponent implements OnInit{
   @Input() position?: NgtVector3;
 
   currentProduct: Observable<Product> = this.store.pipe(select(selectCurrentProduct));
+
   constructor(private store: Store<ProductState>) {}
 
   hovered = false;

@@ -3,6 +3,7 @@ import { createFeatureSelector, createSelector, State } from '@ngrx/store';
 import { ProductsState } from './product.reducer'
 import * as fromProducts from './product.reducer';
 import { Dictionary } from '@ngrx/entity';
+import { Product } from '@geometry-shop/data-models';
 
 export const selectProductsState =
   createFeatureSelector<ProductsState>('products');
@@ -31,5 +32,16 @@ export const selectCurrentProduct = createSelector(
 
 export const selectBasketProducts = createSelector(
   selectProductsState,
-  (ProductsState) => ProductsState.basket
+  (productsState) => productsState.basket
 );
+
+// export const selectBasketBalance = createSelector(
+//   selectProductsState,
+//   (productsState) => {
+//     let total = 0;
+//     productsState.basket.forEach( (product:Product) => {
+//       total += product.price;
+//     })
+//     return total
+//   }
+// )
