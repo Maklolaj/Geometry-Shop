@@ -5,7 +5,6 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 export interface ProductsState extends EntityState<Product> {
   selectedProductId: string;
-  totalBalance: number;
 }
 
 export const adapter: EntityAdapter<Product> = createEntityAdapter<Product>({
@@ -15,7 +14,6 @@ export const adapter: EntityAdapter<Product> = createEntityAdapter<Product>({
 
 export const initialProductsState: ProductsState = adapter.getInitialState({
   selectedProductId: '',
-  totalBalance: 0, //// shallow copy problem
 });
 
 export const productsReducer = createReducer(
@@ -24,23 +22,16 @@ export const productsReducer = createReducer(
     adapter.addMany(payload.products, state)
   ),
   on(ProductActions.selectProductId, (state, { productId }) => {
-    return { ...state, selectedProductId: productId }
-  }),
-  // on(ProductActions.addToBasket, (state, { product }) => {
-  //   state.basket.push(product)
-  //   return {...state, basket: state.basket }
-  // }),
-  // on(ProductActions.clearBasket, (state) => {
-  //   return {...state, basket: [] }
-  // })
+    return { ...state, selectedProductId: productId };
+  })
 );
 
 // Selectors
 export const { selectAll, selectEntities, selectIds, selectTotal } =
   adapter.getSelectors();
 
-export const getSelectedProductId = (state: ProductsState) => state.selectedProductId;
-
+export const getSelectedProductId = (state: ProductsState) =>
+  state.selectedProductId;
 
 // Order loaded entities
 export function compareProducts(c1: Product, c2: Product) {

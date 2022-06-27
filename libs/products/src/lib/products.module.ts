@@ -35,9 +35,10 @@ import { MaterialModule } from '@geometry-shop/material';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductItemComponent } from './components/product-list/containers/product-item/product-item.component';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { productsReducer } from './state/products/product.reducer';
 import { ProductResolver } from './state/products/product.resolver';
 import { ProductsService } from './services/products/products.service';
+import { basketReducer } from './state/./basket/basket.reducer';
+import { productsReducer } from './state/./products/product.reducer';
 
 @NgModule({
   imports: [
@@ -66,8 +67,15 @@ import { ProductsService } from './services/products/products.service';
     NgtMeshStandardMaterialModule,
     //NgtSobaStarsModule,
     NgtStatsModule,
-    RouterModule.forChild([{ path: '', component: ProductsComponent, resolve: {productsData: ProductResolver} }]),
+    RouterModule.forChild([
+      {
+        path: '',
+        component: ProductsComponent,
+        resolve: { productsData: ProductResolver },
+      },
+    ]),
     StoreModule.forFeature('products', productsReducer),
+    StoreModule.forFeature('basket', basketReducer),
     MaterialModule,
     ColorPickerModule,
     //StoreModule.forFeature('auth', reducers),
@@ -79,6 +87,6 @@ import { ProductsService } from './services/products/products.service';
     ProductItemComponent,
   ],
   exports: [ProductsComponent],
-  providers: [ ProductsService, ProductResolver],
+  providers: [ProductsService, ProductResolver],
 })
 export class ProductsModule {}
