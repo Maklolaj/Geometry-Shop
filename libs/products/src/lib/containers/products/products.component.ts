@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { NgtVector3 } from '@angular-three/core';
 import { Curve, Mesh } from 'three';
 import { Product } from '@geometry-shop/data-models';
@@ -6,6 +11,7 @@ import { ProductState } from '../../state/products/product.state';
 import { select, Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';
 import { selectCurrentProduct } from '../../state/products/product.selectors';
+import { selectAllBasketProducts } from '../../state/basket/basket.selectors';
 
 @Component({
   selector: 'geometry-shop-products',
@@ -13,21 +19,28 @@ import { selectCurrentProduct } from '../../state/products/product.selectors';
   styleUrls: ['./products.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsComponent implements OnInit{
+export class ProductsComponent implements OnInit {
   @Input() position?: NgtVector3;
 
-  currentProduct: Observable<Product> = this.store.pipe(select(selectCurrentProduct));
+  currentProduct: Observable<Product> = this.productStore.pipe(
+    select(selectCurrentProduct)
+  );
 
-  constructor(private store: Store<ProductState>) {}
+  productsInBasket: Observable<Product[]> = this.basketStore.pipe(
+    select(selectAllBasketProducts)
+  );
+
+  constructor(
+    private productStore: Store<ProductState>,
+    private basketStore: Store<ProductState>
+  ) {}
 
   hovered = false;
   active = false;
 
   selectedProductColor = 'tomato';
 
-  ngOnInit() {
-   
-  }
+  ngOnInit() {}
 
   onBeforeRender(cube: Mesh) {
     cube.rotateY(0.01);
