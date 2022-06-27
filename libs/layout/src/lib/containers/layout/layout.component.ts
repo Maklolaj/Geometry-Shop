@@ -4,7 +4,7 @@ import { AuthService } from '@geometry-shop/auth';
 import { User } from '@geometry-shop/data-models';
 import { select, Store } from '@ngrx/store';
 import { isLoggedOut } from 'libs/auth/src/lib/state/auth/auth.selectors';
-import { AppState } from 'libs/auth/src/lib/state/auth';
+import { AuthState } from 'libs/auth/src/lib/state/auth';
 import { logout } from 'libs/auth/src/lib/state/auth/auth.actions';
 
 @Component({
@@ -17,7 +17,7 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private store: Store<AppState>
+    private store: Store<AuthState>
   ) {}
 
   isLoggedOut$: Observable<boolean> = of();

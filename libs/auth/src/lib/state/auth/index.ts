@@ -7,9 +7,9 @@ import {
 } from '@ngrx/store';
 import { routerReducer } from '@ngrx/router-store';
 
-export interface AppState {}
+export interface AuthState {}
 
-export const reducers: ActionReducerMap<AppState> = {
+export const reducers: ActionReducerMap<AuthState> = {
   router: routerReducer,
 };
 
