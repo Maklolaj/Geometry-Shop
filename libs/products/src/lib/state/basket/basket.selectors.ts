@@ -11,8 +11,12 @@ export const selectAllBasketProducts = createSelector(
 );
 
 export const selectBasketBalance = createSelector(
-  selectBasketState,
-  (basketState) => {
-    return basketState.totalBalance;
+  selectAllBasketProducts,
+  (basketProducts) => {
+    let total = 0;
+    basketProducts.forEach((element) => {
+      total = total + element.price;
+    });
+    return total;
   }
 );
