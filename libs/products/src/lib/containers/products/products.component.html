@@ -61,6 +61,7 @@
       >Currently selected: {{ (currentProduct | async)?.name }}</span
     >
     <span> Products in basket: {{ (productsInBasket | async)?.length }}</span>
+    <span> Total price: {{ totalPrice | async }}</span>
     <geometry-shop-product-options
       (selectedColor)="selectedColor($event)"
       (selectedSize)="selectedSize($event)"

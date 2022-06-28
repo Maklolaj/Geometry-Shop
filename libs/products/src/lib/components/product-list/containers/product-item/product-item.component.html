@@ -2,7 +2,7 @@
 <mat-card *ngIf="product" class="product-card">
   <mat-card-header>
     <!-- <mat-icon>build</mat-icon> -->
-    <mat-card-title>{{product.name}}</mat-card-title>
+    <mat-card-title>{{ product.name }}</mat-card-title>
     <span>Price: {{ product.price }}</span>
   </mat-card-header>
   <img
@@ -12,11 +12,14 @@
   />
   <mat-card-content>
     <p>
-      {{product.describtion}}
+      {{ product.describtion }}
     </p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="showProduct(product.productId)">SHOW</button>
     <button mat-button (click)="addToBasket(product)">ADD TO CART</button>
+    <button mat-button (click)="removeFromBasket(product)">
+      REMOVE FROM CART
+    </button>
   </mat-card-actions>
 </mat-card>

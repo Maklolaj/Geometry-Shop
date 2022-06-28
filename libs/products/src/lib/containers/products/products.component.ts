@@ -11,7 +11,10 @@ import { ProductState } from '../../state/products/product.state';
 import { select, Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';
 import { selectCurrentProduct } from '../../state/products/product.selectors';
-import { selectAllBasketProducts } from '../../state/basket/basket.selectors';
+import {
+  selectAllBasketProducts,
+  selectBasketBalance,
+} from '../../state/basket/basket.selectors';
 
 @Component({
   selector: 'geometry-shop-products',
@@ -28,6 +31,10 @@ export class ProductsComponent implements OnInit {
 
   productsInBasket: Observable<Product[]> = this.basketStore.pipe(
     select(selectAllBasketProducts)
+  );
+
+  totalPrice: Observable<number> = this.basketStore.pipe(
+    select(selectBasketBalance)
   );
 
   constructor(

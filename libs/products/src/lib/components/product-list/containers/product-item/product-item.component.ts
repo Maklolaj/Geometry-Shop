@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Product } from '@geometry-shop/data-models';
 import { compose, select, Store } from '@ngrx/store';
-import { addToBasket } from 'libs/products/src/lib/state/basket/basket.actions';
+import {
+  addToBasket,
+  removeFromBasket,
+} from 'libs/products/src/lib/state/basket/basket.actions';
 import { BasketState } from 'libs/products/src/lib/state/basket/basket.state';
 import { selectCurrentProduct } from 'libs/products/src/lib/state/products/product.selectors';
 import { ProductState } from 'libs/products/src/lib/state/products/product.state';
@@ -28,5 +31,9 @@ export class ProductItemComponent {
 
   public addToBasket(product: Product): void {
     this.basketStore.dispatch(addToBasket({ product }));
+  }
+
+  public removeFromBasket(product: Product): void {
+    this.basketStore.dispatch(removeFromBasket({ product }));
   }
 }
