@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ProductsComponent } from './containers/products/products.component';
 import { NgtMeshModule } from '@angular-three/core/meshes';
-import { NgtMeshStandardMaterialModule } from '@angular-three/core/materials';
+import {
+  NgtMeshStandardMaterialModule,
+  NgtShadowMaterialModule,
+} from '@angular-three/core/materials';
 //import { NgtTes } from '@angular-three/soba/staging';
 import {
   NgtBoxGeometryModule,
@@ -39,6 +42,7 @@ import { ProductResolver } from './state/products/product.resolver';
 import { ProductsService } from './services/products/products.service';
 import { basketReducer } from './state/./basket/basket.reducer';
 import { productsReducer } from './state/./products/product.reducer';
+import { NgtOrthographicCameraModule } from '@angular-three/core/cameras';
 
 @NgModule({
   imports: [
@@ -65,6 +69,8 @@ import { productsReducer } from './state/./products/product.reducer';
     NgtTorusGeometryModule,
 
     NgtMeshStandardMaterialModule,
+    NgtShadowMaterialModule,
+    NgtOrthographicCameraModule,
     //NgtSobaStarsModule,
     NgtStatsModule,
     RouterModule.forChild([
