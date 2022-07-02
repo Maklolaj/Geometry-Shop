@@ -1,4 +1,4 @@
-<div>Product List</div>
+<!-- <div>Product List</div>
 <div class="cdk-virtual-scroll-data-source-product">
   <cdk-virtual-scroll-viewport
     class="product-viewport"
@@ -11,4 +11,37 @@
     >
     </geometry-shop-product-item>
   </cdk-virtual-scroll-viewport>
+</div> -->
+
+<div class="example-table-container">
+  <table
+    mat-table
+    [dataSource]="this.dataSource"
+    class="mat-elevation-z8 demo-table"
+  >
+    <ng-container
+      *ngFor="let column of columns"
+      [matColumnDef]="column.columnDef"
+    >
+      <th mat-header-cell *matHeaderCellDef>
+        {{ column.header }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ column.cell(row) }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    #paginator
+    [length]="(products$ | async)?.length"
+    [pageSize]="5"
+    aria-label="Select page of GitHub search results"
+  ></mat-paginator>
 </div>
+
+<!-- Add sorting 
+    Add actions btns -->

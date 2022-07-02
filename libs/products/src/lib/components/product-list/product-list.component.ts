@@ -3,6 +3,7 @@ import {
   Component,
   Input,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import {
   FixedSizeVirtualScrollStrategy,
@@ -11,9 +12,11 @@ import {
 import { Product } from '@geometry-shop/data-models';
 import { select, Store } from '@ngrx/store';
 import { selectAllProducts } from '../../state/products/product.selectors';
-import { Observable, of } from 'rxjs';
+import { Observable, of, pipe, take, tap } from 'rxjs';
 import { ProductState } from '../../state/products/product.state';
 import { selectAll } from '../../state/products/product.reducer';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 export class CustomVirtualScrollStrategy extends FixedSizeVirtualScrollStrategy {
   constructor() {
     super(50, 250, 500);
@@ -30,16 +33,38 @@ export class CustomVirtualScrollStrategy extends FixedSizeVirtualScrollStrategy 
   ],
 })
 export class ProductListComponent implements OnInit {
-  items = Array.from({ length: 40 }).map((_, i) => `Item #${i}`);
+  columns = [
+    {
+      columnDef: 'name',
+      header: 'Name',
+      cell: (element: Product) => `${element.name}`,
+    },
+    {
+      columnDef: 'color',
+      header: 'Color',
+      cell: (element: Product) => `${element.color}`,
+    },
+    {
+      columnDef: 'price',
+      header: 'Price',
+      cell: (element: Product) => `${element.price}`,
+    },
+  ];
+  displayedColumns = this.columns.map((c) => c.columnDef);
 
-  products: Product[] = [];
+  @ViewChild('paginator') paginator!: MatPaginator;
+
+  dataSource!: MatTableDataSource<Product>;
 
   constructor(private store: Store<ProductState>) {}
 
-  products$: Observable<Product[]> = of();
+  products$: Observable<Product[]> = of([]);
 
   ngOnInit() {
     this.products$ = this.store.pipe(select(selectAllProducts));
-    this.products$.subscribe((a) => console.log(a));
+    this.products$.subscribe((products: Product[]) => {
+      this.dataSource = new MatTableDataSource(products);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 }

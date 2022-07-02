@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatTableModule,
     MatSelectModule,
     ScrollingModule,
+    MatPaginatorModule,
   ],
   exports: [
     FlexLayoutModule,
@@ -43,6 +45,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatTableModule,
     MatSelectModule,
     ScrollingModule,
+    MatPaginatorModule,
   ],
 })
 export class MaterialModule {}
