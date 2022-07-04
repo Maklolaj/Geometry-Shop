@@ -17,6 +17,14 @@ import { ProductState } from '../../state/products/product.state';
 import { selectAll } from '../../state/products/product.reducer';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+
 export class CustomVirtualScrollStrategy extends FixedSizeVirtualScrollStrategy {
   constructor() {
     super(50, 250, 500);
@@ -30,6 +38,16 @@ export class CustomVirtualScrollStrategy extends FixedSizeVirtualScrollStrategy 
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: VIRTUAL_SCROLL_STRATEGY, useClass: CustomVirtualScrollStrategy },
+  ],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
   ],
 })
 export class ProductListComponent implements OnInit {
@@ -51,6 +69,9 @@ export class ProductListComponent implements OnInit {
     },
   ];
   displayedColumns = this.columns.map((c) => c.columnDef);
+
+  expandedElement: Product | null | undefined;
+  columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
 
   @ViewChild('paginator') paginator!: MatPaginator;
 
