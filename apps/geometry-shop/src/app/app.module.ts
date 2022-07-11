@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { authRoutes, AuthModule, AuthGuard } from '@geometry-shop/auth';
 import { RouterModule, RouterState } from '@angular/router';
 import { LayoutModule } from '@geometry-shop/layout';
+import { SummaryModule } from '@geometry-shop/summary';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { NgtMeshModule } from '@angular-three/core/meshes';
 import { NgtCanvasModule } from '@angular-three/core';
@@ -47,6 +48,14 @@ import {
             ),
           canActivate: [AuthGuard],
         },
+        {
+          path: 'summary',
+          loadChildren: () =>
+            import('@geometry-shop/summary').then(
+              (module) => module.SummaryModule
+            ),
+          canActivate: [AuthGuard],
+        },
       ],
       {
         initialNavigation: 'enabled',
@@ -54,6 +63,7 @@ import {
     ),
     AuthModule,
     LayoutModule,
+    SummaryModule,
     StoreModule.forRoot({}),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
