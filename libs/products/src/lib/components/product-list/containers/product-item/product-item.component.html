@@ -1,15 +1,7 @@
-<div>Product item</div>
 <mat-card *ngIf="product" class="product-card">
-  <mat-card-header>
-    <!-- <mat-icon>build</mat-icon> -->
-    <mat-card-title>{{ product.name }}</mat-card-title>
-    <span>Price: {{ product.price }}</span>
+  <mat-card-header class="product-card__header">
+    <mat-card-title>{{ product.name | uppercase }}</mat-card-title>
   </mat-card-header>
-  <img
-    class="product-card__image"
-    mat-card-image
-    src="https://cdn.pixabay.com/photo/2016/08/17/18/05/flower-of-life-1601163_960_720.png"
-  />
   <mat-card-content>
     <p>
       {{ product.describtion }}
