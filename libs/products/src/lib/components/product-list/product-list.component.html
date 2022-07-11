@@ -3,6 +3,7 @@
     multiTemplateDataRows
     mat-table
     [dataSource]="this.dataSource"
+    [trackBy]="trackByProducts"
     class="mat-elevation-z8 demo-table"
   >
     <ng-container matColumnDef="name">

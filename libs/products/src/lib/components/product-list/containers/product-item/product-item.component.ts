@@ -35,7 +35,9 @@ export class ProductItemComponent implements OnInit {
   ngOnInit(): void {
     this.isInBasket = this.basketStore
       .pipe(select(selectAllBasketProducts))
-      .pipe(map((basketList: Product[]) => !basketList.indexOf(this.product)));
+      .pipe(
+        map((basketList: Product[]) => basketList.indexOf(this.product) > -1)
+      );
   }
 
   public showProduct(productId: string): void {

@@ -43,6 +43,7 @@ import { ProductsService } from './services/products/products.service';
 import { basketReducer } from './state/./basket/basket.reducer';
 import { productsReducer } from './state/./products/product.reducer';
 import { NgtOrthographicCameraModule } from '@angular-three/core/cameras';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -83,6 +84,7 @@ import { NgtOrthographicCameraModule } from '@angular-three/core/cameras';
     StoreModule.forFeature('products', productsReducer),
     StoreModule.forFeature('basket', basketReducer),
     MaterialModule,
+    MatTableModule,
     ColorPickerModule,
     //StoreModule.forFeature('auth', reducers),
   ],

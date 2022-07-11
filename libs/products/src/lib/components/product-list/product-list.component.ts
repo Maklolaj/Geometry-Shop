@@ -88,4 +88,8 @@ export class ProductListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     });
   }
+
+  public trackByProducts(index: number, product: Product): string {
+    return product.productId;
+  }
 }
