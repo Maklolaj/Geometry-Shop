@@ -51,7 +51,6 @@ export class ProductResolver implements Resolve<any> {
         .getAllProducts()
         .toPromise()
         .then((products) => {
-          console.log(products);
           products
             ? this.store.dispatch(retrieveProductList({ products }))
             : null;

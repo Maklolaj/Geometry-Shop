@@ -22,9 +22,4 @@ export class LoginFormComponent {
       password: this.loginForm.value.password,
     } as Authenticate);
   }
-
-  checkRender(): boolean {
-    console.log('checkRender');
-    return true;
-  }
 }
