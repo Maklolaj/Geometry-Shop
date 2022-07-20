@@ -21,6 +21,7 @@ import {
   NgtSpotLightModule,
   NgtPointLightModule,
 } from '@angular-three/core/lights';
+import { BasketSummaryComponent } from 'libs/summary/src/lib/containers/basket-summary/basket-summary.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -54,6 +55,7 @@ import {
             import('@geometry-shop/summary').then(
               (module) => module.SummaryModule
             ),
+          component: BasketSummaryComponent,
           canActivate: [AuthGuard],
         },
       ],
@@ -63,7 +65,6 @@ import {
     ),
     AuthModule,
     LayoutModule,
-    SummaryModule,
     StoreModule.forRoot({}),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
