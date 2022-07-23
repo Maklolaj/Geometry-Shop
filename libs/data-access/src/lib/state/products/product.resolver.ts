@@ -19,9 +19,9 @@ import {
 } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { ProductState } from './product.state';
-import { ProductsService } from '../../services/products/products.service';
+import { ProductsService } from '../../http-service/products/products.service';
 import { selectAllProducts } from './product.selectors';
-import { retrieveProductList } from './products.actions';
+import { retrieveProductList } from './product.actions';
 import { Product } from '@geometry-shop/domain';
 
 @Injectable({ providedIn: 'root' })

@@ -38,10 +38,10 @@ import { MaterialModule } from '@geometry-shop/material';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductItemComponent } from './components/product-list/containers/product-item/product-item.component';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { ProductResolver } from './state/products/product.resolver';
-import { ProductsService } from './services/products/products.service';
-import { basketReducer } from './state/./basket/basket.reducer';
-import { productsReducer } from './state/./products/product.reducer';
+import { ProductResolver } from '@geometry-shop/data-access';
+import { ProductsService } from '@geometry-shop/data-access';
+import { BasketReducer } from '@geometry-shop/data-access';
+import { ProductReducer } from '@geometry-shop/data-access';
 import { NgtOrthographicCameraModule } from '@angular-three/core/cameras';
 
 @NgModule({
@@ -80,11 +80,10 @@ import { NgtOrthographicCameraModule } from '@angular-three/core/cameras';
         resolve: { productsData: ProductResolver },
       },
     ]),
-    StoreModule.forFeature('products', productsReducer),
-    StoreModule.forFeature('basket', basketReducer),
+    StoreModule.forFeature('products', ProductReducer.productsReducer),
+    StoreModule.forFeature('basket', BasketReducer.basketReducer),
     MaterialModule,
     ColorPickerModule,
-    //StoreModule.forFeature('auth', reducers),
   ],
   declarations: [
     ProductsComponent,

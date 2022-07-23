@@ -1,32 +1,32 @@
 import { Product } from '@geometry-shop/domain';
 import { createReducer, on, State } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { BasketActions } from './basket-action-types';
+import { BasketActions } from '@geometry-shop/data-access';
 
 export interface BasketState extends EntityState<Product> {}
 
-export const adapter: EntityAdapter<Product> = createEntityAdapter<Product>({
+export const basketAdapter: EntityAdapter<Product> = createEntityAdapter<Product>({
   selectId: (product: Product) => product.productId,
 });
 
-export const initialProductsState: BasketState = adapter.getInitialState({});
+export const initialProductsState: BasketState = basketAdapter.getInitialState({});
 
 export const basketReducer = createReducer(
   initialProductsState,
   on(BasketActions.addToBasket, (state, payload) => {
-    return adapter.addOne(payload.product, {
+    return basketAdapter.addOne(payload.product, {
       ...state,
     });
   }),
   on(BasketActions.clearBasket, (state) => {
-    return adapter.removeAll({ ...state });
+    return basketAdapter.removeAll({ ...state });
   }),
   on(BasketActions.removeFromBasket, (state, payload) => {
-    return adapter.removeOne(payload.product.productId, {
+    return basketAdapter.removeOne(payload.product.productId, {
       ...state,
     });
   })
 );
 
 export const { selectAll, selectEntities, selectIds, selectTotal } =
-  adapter.getSelectors();
+basketAdapter.getSelectors();

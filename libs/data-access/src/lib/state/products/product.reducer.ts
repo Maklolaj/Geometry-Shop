@@ -1,6 +1,6 @@
 import { Product } from '@geometry-shop/domain';
 import { createReducer, on, State } from '@ngrx/store';
-import { ProductActions } from './product-action-types';
+import { ProductActions } from '@geometry-shop/data-access';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 export interface ProductsState extends EntityState<Product> {

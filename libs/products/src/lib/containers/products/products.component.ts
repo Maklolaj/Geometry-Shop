@@ -7,14 +7,14 @@ import {
 import { NgtVector3 } from '@angular-three/core';
 import { Curve, Mesh } from 'three';
 import { Product } from '@geometry-shop/domain';
-import { ProductState } from '../../state/products/product.state';
 import { select, Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';
-import { selectCurrentProduct } from '../../state/products/product.selectors';
 import {
   selectAllBasketProducts,
   selectBasketBalance,
-} from '../../state/basket/basket.selectors';
+  selectCurrentProduct,
+  ProductState
+} from '@geometry-shop/data-access';
 
 @Component({
   selector: 'geometry-shop-products',
