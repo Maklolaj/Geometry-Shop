@@ -22,7 +22,7 @@ import { ProductState } from './product.state';
 import { ProductsService } from '../../services/products/products.service';
 import { selectAllProducts } from './product.selectors';
 import { retrieveProductList } from './products.actions';
-import { Product } from '@geometry-shop/data-models';
+import { Product } from '@geometry-shop/domain';
 
 @Injectable({ providedIn: 'root' })
 export class ProductResolver implements Resolve<any> {

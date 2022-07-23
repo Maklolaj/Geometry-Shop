@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { BasketState } from './basket.reducer';
 import * as fromBasket from './basket.reducer';
-import { Product } from '@geometry-shop/data-models';
+import { Product } from '@geometry-shop/domain';
 
 export const selectBasketState = createFeatureSelector<BasketState>('basket');
 

@@ -7,7 +7,7 @@ import {
   MetaReducer,
   on,
 } from '@ngrx/store';
-import { User } from '@geometry-shop/data-models';
+import { User } from '@geometry-shop/domain';
 import { AuthActions } from './auth.actions';
 import { ContentObserver } from '@angular/cdk/observers';
 import { getUserFromLocalStorage } from '../../services/auth/auth.utils';

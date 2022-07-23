@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from '@geometry-shop/data-models';
+import { User } from '@geometry-shop/domain';
 import * as AuthActions from './auth.actions';
 
 export { AuthActions };

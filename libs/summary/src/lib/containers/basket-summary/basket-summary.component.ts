@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '@geometry-shop/data-models';
+import { Product } from '@geometry-shop/domain';
 import { BasketState } from 'libs/products/src/lib/state/basket/basket.state';
 import { select, Store } from '@ngrx/store';
 import { selectAllBasketProducts } from '../../../../../products/src/lib/state/basket/basket.selectors';

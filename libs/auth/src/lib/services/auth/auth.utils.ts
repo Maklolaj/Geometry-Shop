@@ -1,4 +1,4 @@
-import { User } from '@geometry-shop/data-models';
+import { User } from '@geometry-shop/domain';
 
 export function getUserFromLocalStorage(): User | undefined {
   {

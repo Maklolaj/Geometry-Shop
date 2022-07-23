@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Product } from '@geometry-shop/data-models';
+import { Product } from '@geometry-shop/domain';
 
 export const retrieveProductList = createAction(
   '[Load Products Effect] All products Loaded',

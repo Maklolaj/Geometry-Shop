@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { NgtVector3 } from '@angular-three/core';
 import { Curve, Mesh } from 'three';
-import { Product } from '@geometry-shop/data-models';
+import { Product } from '@geometry-shop/domain';
 import { ProductState } from '../../state/products/product.state';
 import { select, Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';

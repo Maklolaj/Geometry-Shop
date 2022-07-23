@@ -1,4 +1,4 @@
-import { Product } from '@geometry-shop/data-models';
+import { Product } from '@geometry-shop/domain';
 import { createReducer, on, State } from '@ngrx/store';
 import { ProductActions } from './product-action-types';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';

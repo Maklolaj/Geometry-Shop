@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-//import { Authenticate } from 'libs/data-models/src/lib/authenticate';
-import { Authenticate, User } from '@geometry-shop/data-models';
+import { Authenticate, User } from '@geometry-shop/domain';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({

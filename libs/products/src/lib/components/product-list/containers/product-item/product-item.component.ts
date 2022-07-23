@@ -4,7 +4,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { Product } from '@geometry-shop/data-models';
+import { Product } from '@geometry-shop/domain';
 import { compose, select, Store } from '@ngrx/store';
 import {
   addToBasket,

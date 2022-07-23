@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Authenticate, User } from '@geometry-shop/data-models';
+import { Authenticate, User } from '@geometry-shop/domain';
 import { select, Store } from '@ngrx/store';
 import { Observable, of, tap } from 'rxjs';
 import { AuthService } from '../../services/auth/auth.service';

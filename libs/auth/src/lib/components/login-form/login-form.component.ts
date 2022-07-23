@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Authenticate } from '@geometry-shop/data-models';
-// import { Authenticate } from 'libs/data-models/src/lib/authenticate';
+import { Authenticate } from '@geometry-shop/domain';
 
 @Component({
   selector: 'geometry-shop-login-form',

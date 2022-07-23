@@ -9,7 +9,7 @@ import {
   FixedSizeVirtualScrollStrategy,
   VIRTUAL_SCROLL_STRATEGY,
 } from '@angular/cdk/scrolling';
-import { Product } from '@geometry-shop/data-models';
+import { Product } from '@geometry-shop/domain';
 import { select, Store } from '@ngrx/store';
 import { selectAllProducts } from '../../state/products/product.selectors';
 import { Observable, of, pipe, take, tap } from 'rxjs';
