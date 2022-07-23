@@ -17,6 +17,7 @@
     "paths": {
       "@geometry-shop/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@geometry-shop/auth": ["libs/auth/src/index.ts"],
+      "@geometry-shop/data-access": ["libs/data-access/src/index.ts"],
       "@geometry-shop/domain": ["libs/domain/src/index.ts"],
       "@geometry-shop/features": ["libs/features/src/index.ts"],
       "@geometry-shop/layout": ["libs/layout/src/index.ts"],

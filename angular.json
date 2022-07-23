@@ -5,6 +5,7 @@
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
     "auth": "libs/auth",
+    "data-access": "libs/data-access",
     "domain": "libs/domain",
     "features": "libs/features",
     "geometry-shop": "apps/geometry-shop",
