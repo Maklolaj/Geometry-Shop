@@ -10,10 +10,9 @@ import { Product } from '@geometry-shop/domain';
 import { select, Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';
 import {
-  selectAllBasketProducts,
-  selectBasketBalance,
-  selectCurrentProduct,
-  ProductState
+  ProductSelectors,
+  BasketSelectors,
+  ProductState,
 } from '@geometry-shop/data-access';
 
 @Component({
@@ -26,15 +25,15 @@ export class ProductsComponent implements OnInit {
   @Input() position?: NgtVector3;
 
   currentProduct: Observable<Product> = this.productStore.pipe(
-    select(selectCurrentProduct)
+    select(ProductSelectors.selectCurrentProduct)
   );
 
   productsInBasket: Observable<Product[]> = this.basketStore.pipe(
-    select(selectAllBasketProducts)
+    select(BasketSelectors.selectAllBasketProducts)
   );
 
   totalPrice: Observable<number> = this.basketStore.pipe(
-    select(selectBasketBalance)
+    select(BasketSelectors.selectBasketBalance)
   );
 
   constructor(

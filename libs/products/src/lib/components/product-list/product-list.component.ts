@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -11,10 +12,8 @@ import {
 } from '@angular/cdk/scrolling';
 import { Product } from '@geometry-shop/domain';
 import { select, Store } from '@ngrx/store';
-import { selectAllProducts } from '../../state/products/product.selectors';
 import { Observable, of, pipe, take, tap } from 'rxjs';
-import { ProductState } from '../../state/products/product.state';
-import { selectAll } from '../../state/products/product.reducer';
+import { ProductSelectors, ProductState } from '@geometry-shop/data-access';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {
@@ -82,10 +81,12 @@ export class ProductListComponent implements OnInit {
   products$: Observable<Product[]> = of([]);
 
   ngOnInit() {
-    this.products$ = this.store.pipe(select(selectAllProducts));
+    this.products$ = this.store.pipe(select(ProductSelectors.selectAllProducts));
     this.products$.subscribe((products: Product[]) => {
       this.dataSource = new MatTableDataSource(products);
-      this.dataSource.paginator = this.paginator;
+
+      // without timeout -> pagination does not work on reinitialization
+      setTimeout(() => this.dataSource.paginator = this.paginator);
     });
   }
 

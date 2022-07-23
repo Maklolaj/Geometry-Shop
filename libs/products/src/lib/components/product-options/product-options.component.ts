@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { NgtVector3 } from '@angular-three/core';
 import { Mesh } from 'three';
 import { Observable } from 'rxjs';
-import { ProductState } from '../../state/products/product.state';
+import { ProductState } from '@geometry-shop/data-access';
 import { select, Store } from '@ngrx/store';
 
 @Component({

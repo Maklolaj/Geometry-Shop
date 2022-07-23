@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '@geometry-shop/domain';
-import { BasketState } from 'libs/products/src/lib/state/basket/basket.state';
+import { BasketState, BasketSelectors } from '@geometry-shop/data-access';
 import { select, Store } from '@ngrx/store';
-import { selectAllBasketProducts } from '../../../../../products/src/lib/state/basket/basket.selectors';
 import { Observable, of, take } from 'rxjs';
 
 @Component({
@@ -20,7 +19,7 @@ export class BasketSummaryComponent implements OnInit {
   
   ngOnInit(): void {
     this.basketItems = this.basketStore
-      .pipe(select(selectAllBasketProducts))
+      .pipe(select(BasketSelectors.selectAllBasketProducts))
     this.basketItems.pipe(take(1)).subscribe( (products:Product[]) => {
       this.totalCost = products.map(t => t.price).reduce((acc, value) => acc + value, 0);
     })

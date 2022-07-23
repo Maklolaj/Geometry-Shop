@@ -7,15 +7,13 @@ import {
 import { Product } from '@geometry-shop/domain';
 import { compose, select, Store } from '@ngrx/store';
 import {
-  addToBasket,
-  removeFromBasket,
-} from 'libs/products/src/lib/state/basket/basket.actions';
-import { BasketState } from 'libs/products/src/lib/state/basket/basket.state';
-import { selectCurrentProduct } from 'libs/products/src/lib/state/products/product.selectors';
-import { ProductState } from 'libs/products/src/lib/state/products/product.state';
-import { selectProductId } from 'libs/products/src/lib/state/products/products.actions';
+  BasketActions,
+  BasketSelectors,
+  ProductActions,
+  ProductState,
+  BasketState,
+} from '@geometry-shop/data-access';
 import { Observable, of, take, mergeMap, map } from 'rxjs';
-import { selectAllBasketProducts } from '../../../../state/basket/basket.selectors';
 
 @Component({
   selector: 'geometry-shop-product-item',
@@ -34,21 +32,21 @@ export class ProductItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.isInBasket = this.basketStore
-      .pipe(select(selectAllBasketProducts))
+      .pipe(select(BasketSelectors.selectAllBasketProducts))
       .pipe(
         map((basketList: Product[]) => basketList.indexOf(this.product) > -1)
       );
   }
 
   public showProduct(productId: string): void {
-    this.productStore.dispatch(selectProductId({ productId }));
+    this.productStore.dispatch(ProductActions.selectProductId({ productId }));
   }
 
   public addToBasket(product: Product): void {
-    this.basketStore.dispatch(addToBasket({ product }));
+    this.basketStore.dispatch(BasketActions.addToBasket({ product }));
   }
 
   public removeFromBasket(product: Product): void {
-    this.basketStore.dispatch(removeFromBasket({ product }));
+    this.basketStore.dispatch(BasketActions.removeFromBasket({ product }));
   }
 }
