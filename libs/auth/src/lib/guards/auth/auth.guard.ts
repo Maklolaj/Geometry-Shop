@@ -6,7 +6,7 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '@geometry-shop/data-access';
 import { map } from 'rxjs/operators';
 
 @Injectable({

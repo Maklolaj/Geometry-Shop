@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Authenticate, User } from '@geometry-shop/domain';
 import { select, Store } from '@ngrx/store';
 import { Observable, of, tap } from 'rxjs';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '@geometry-shop/data-access';
 import { AuthState } from '../../state/auth';
 import { login } from '../../state/auth/auth.actions';
 import { isLoggedIn, isLoggedOut } from '../../state/auth/auth.selectors';

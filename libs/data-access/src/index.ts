@@ -13,5 +13,8 @@ export * as ProductReducer from './lib/state/products/product.reducer';
 export * from './lib/state/products/product.resolver';
 export * from './lib/state/products/product.state';
 
-// Http Products Service
+// Products Services
 export * from './lib/http-service/products/products.service';
+
+// Auth Services
+export * from './lib/http-service/auth/auth.service'

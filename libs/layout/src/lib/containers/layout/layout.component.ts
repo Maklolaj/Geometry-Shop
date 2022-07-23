@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { empty, Observable, of } from 'rxjs';
-import { AuthService } from '@geometry-shop/auth';
+import { Observable, of } from 'rxjs';
+import { AuthService } from '@geometry-shop/data-access';
 import { User } from '@geometry-shop/domain';
 import { select, Store } from '@ngrx/store';
 import { isLoggedOut } from 'libs/auth/src/lib/state/auth/auth.selectors';

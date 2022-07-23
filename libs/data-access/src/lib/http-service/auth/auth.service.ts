@@ -8,7 +8,10 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 })
 export class AuthService {
   private userSubject$ = new BehaviorSubject<User>(null as any);
+
+  // Current User
   user$ = this.userSubject$.asObservable();
+
   constructor(private httpClient: HttpClient) {
     const user = localStorage.getItem('user');
     if (user) {
