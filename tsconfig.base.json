@@ -22,8 +22,7 @@
       "@geometry-shop/features": ["libs/features/src/index.ts"],
       "@geometry-shop/layout": ["libs/layout/src/index.ts"],
       "@geometry-shop/material": ["libs/material/src/index.ts"],
-      "@geometry-shop/products": ["libs/products/src/index.ts"],
-      "@geometry-shop/summary": ["libs/summary/src/index.ts"]
+      "@geometry-shop/products": ["libs/products/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

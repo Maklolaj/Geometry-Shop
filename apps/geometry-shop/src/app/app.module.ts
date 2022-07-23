@@ -1,42 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
 import { authRoutes, AuthModule, AuthGuard } from '@geometry-shop/auth';
-import { RouterModule, RouterState } from '@angular/router';
+import { BasketSummaryComponent } from '@geometry-shop/features';
 import { LayoutModule } from '@geometry-shop/layout';
-import { SummaryModule } from '@geometry-shop/summary';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { NgtMeshModule } from '@angular-three/core/meshes';
-import { NgtCanvasModule } from '@angular-three/core';
-import { NgtMeshStandardMaterialModule } from '@angular-three/core/materials';
-import { NgtBoxGeometryModule } from '@angular-three/core/geometries';
-import {
-  NgtAmbientLightModule,
-  NgtSpotLightModule,
-  NgtPointLightModule,
-} from '@angular-three/core/lights';
-import { BasketSummaryComponent } from 'libs/summary/src/lib/containers/basket-summary/basket-summary.component';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
     BrowserAnimationsModule,
-    NgtCanvasModule,
-    NgtMeshModule,
-    NgtAmbientLightModule,
-    NgtSpotLightModule,
-    NgtPointLightModule,
-    NgtBoxGeometryModule,
-    NgtMeshStandardMaterialModule,
-
     RouterModule.forRoot(
       [
         { path: '', pathMatch: 'full', redirectTo: 'products' },
@@ -52,8 +31,8 @@ import { BasketSummaryComponent } from 'libs/summary/src/lib/containers/basket-s
         {
           path: 'summary',
           loadChildren: () =>
-            import('@geometry-shop/summary').then(
-              (module) => module.SummaryModule
+            import('@geometry-shop/features').then(
+              (module) => module.FeaturesModule,
             ),
           component: BasketSummaryComponent,
           canActivate: [AuthGuard],

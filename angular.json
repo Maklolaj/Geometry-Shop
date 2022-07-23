@@ -12,7 +12,6 @@
     "geometry-shop-e2e": "apps/geometry-shop-e2e",
     "layout": "libs/layout",
     "material": "libs/material",
-    "products": "libs/products",
-    "summary": "libs/summary"
+    "products": "libs/products"
   }
 }
