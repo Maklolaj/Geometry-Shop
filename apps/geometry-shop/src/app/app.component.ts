@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@geometry-shop/api-interfaces';
+//import { Message } from '@geometry-shop/api-interfaces';
 import { NgtVector3 } from '@angular-three/core';
 import { Mesh } from 'three';
 
