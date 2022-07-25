@@ -7,9 +7,11 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
-import { authRoutes, AuthModule, AuthGuard } from '@geometry-shop/auth';
+import { authRoutes, AuthModule } from '@geometry-shop/auth';
+import { AuthGuard } from '@geometry-shop/data-access'
 import { BasketSummaryComponent } from '@geometry-shop/features';
 import { LayoutModule } from '@geometry-shop/layout';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [AppComponent],

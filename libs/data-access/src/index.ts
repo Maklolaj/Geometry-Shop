@@ -22,7 +22,10 @@ export * from './lib/state/auth/auth.selectors';
 export * from './lib/http-service/products/products.service';
 
 // Auth Services
-export * from './lib/http-service/auth/auth.service'
+export * from './lib/http-service/auth/auth.service';
 
 // Local Storage Service
-export * from './lib/utils/local-storage-serive'
+export * from './lib/utils/local-storage-serive';
+
+// Auth Guard
+export * from './lib/guards/auth/auth.guard';
