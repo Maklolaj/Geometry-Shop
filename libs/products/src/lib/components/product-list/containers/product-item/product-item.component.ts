@@ -19,9 +19,10 @@ import { Observable, of, take, mergeMap, map } from 'rxjs';
   selector: 'geometry-shop-product-item',
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductItemComponent implements OnInit {
-  //TODO change detection on push?
+  
   @Input() product!: Product;
   constructor(
     private readonly productStore: Store<ProductState>,
@@ -31,6 +32,10 @@ export class ProductItemComponent implements OnInit {
   isInBasket: Observable<boolean> = of(false);
 
   ngOnInit(): void {
+    this.setupBasketSelectionStatus();
+  }
+
+  private setupBasketSelectionStatus(): void {
     this.isInBasket = this.basketStore
       .pipe(select(BasketSelectors.selectAllBasketProducts))
       .pipe(

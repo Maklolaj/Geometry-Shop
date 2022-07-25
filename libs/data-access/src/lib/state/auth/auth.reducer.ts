@@ -5,8 +5,7 @@ import {
 import { User } from '@geometry-shop/domain';
 import { AuthActions } from './auth.actions';
 import { ContentObserver } from '@angular/cdk/observers';
-import { getUserFromLocalStorage } from '@geometry-shop/data-access';
-
+import { getUserFromLocalStorage } from '../../utils/local-storage-serive'
 export interface AuthState {
   user: User | undefined;
 }

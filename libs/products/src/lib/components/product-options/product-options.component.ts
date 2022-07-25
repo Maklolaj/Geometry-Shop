@@ -9,11 +9,10 @@ import { select, Store } from '@ngrx/store';
   selector: 'geometry-shop-product-options',
   templateUrl: './product-options.component.html',
   styleUrls: ['./product-options.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductOptionsComponent {
   color = 'red';
-
-  // productsBasket: Observable<number> = this.store.pipe(select(selectBasketBalance));
 
   @Output() 
   selectedColor: EventEmitter<string> = new EventEmitter();
