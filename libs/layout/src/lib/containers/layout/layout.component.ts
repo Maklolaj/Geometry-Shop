@@ -3,9 +3,7 @@ import { Observable, of } from 'rxjs';
 import { AuthService } from '@geometry-shop/data-access';
 import { User } from '@geometry-shop/domain';
 import { select, Store } from '@ngrx/store';
-import { isLoggedOut } from 'libs/auth/src/lib/state/auth/auth.selectors';
-import { AuthState } from 'libs/auth/src/lib/state/auth';
-import { logout } from 'libs/auth/src/lib/state/auth/auth.actions';
+import { isLoggedOut, AuthState, logout} from '@geometry-shop/data-access';
 
 @Component({
   selector: 'geometry-shop-layout',

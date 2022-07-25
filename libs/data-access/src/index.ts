@@ -13,6 +13,11 @@ export * as ProductReducer from './lib/state/products/product.reducer';
 export * from './lib/state/products/product.resolver';
 export * from './lib/state/products/product.state';
 
+// Auth
+export * from './lib/state/auth/auth.actions';
+export * from './lib/state/auth/auth.reducer';
+export * from './lib/state/auth/auth.selectors';
+
 // Products Services
 export * from './lib/http-service/products/products.service';
 

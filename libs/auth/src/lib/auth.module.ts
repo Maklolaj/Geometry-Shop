@@ -6,9 +6,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '@geometry-shop/material';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { authReducer } from './state/auth/auth.reducer';
+import { authReducer } from '@geometry-shop/data-access';
 
 export const authRoutes: Route[] = [
   { path: 'login', component: LoginComponent },
@@ -22,7 +21,6 @@ export const authRoutes: Route[] = [
     MaterialModule,
     ReactiveFormsModule,
     StoreModule.forFeature('auth', authReducer),
-    //EffectsModule.forFeature([AuthEffects])
   ],
   exports: [LoginFormComponent],
   declarations: [LoginComponent, LoginFormComponent],

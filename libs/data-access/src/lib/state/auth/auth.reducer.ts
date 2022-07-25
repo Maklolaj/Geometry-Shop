@@ -1,10 +1,5 @@
 import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
   createReducer,
-  createSelector,
-  MetaReducer,
   on,
 } from '@ngrx/store';
 import { User } from '@geometry-shop/domain';
