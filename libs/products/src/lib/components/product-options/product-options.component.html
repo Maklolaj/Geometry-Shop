@@ -1,9 +1,18 @@
-<div class="product-options">
-  <mat-form-field appearance="fill" floatLabel="always">
-    <mat-label>Size</mat-label>
-    <input matInput type="number" placeholder="0"
-    (change)="productSizeChanged($event)"/>
-  </mat-form-field>
+<div class="product-options_container">
+  <div class="product-options_sizing-arrows">
+    <button mat-icon-button>
+      <mat-icon class="sizing_arrow-upward">arrow_upward</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon class="sizing_arrow-downward">arrow_downward</mat-icon>
+    </button>
+  </div>
+
+  <div class="product-options_selection">
+    <span>Seletected size:</span>
+    <span> {{ scale }}</span>
+  </div>
+
   <input
     [(colorPicker)]="color"
     [style.background]="color"
@@ -11,3 +20,4 @@
   />
   <div>{{ color }}</div>
 </div>
+

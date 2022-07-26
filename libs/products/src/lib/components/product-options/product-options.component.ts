@@ -31,4 +31,10 @@ export class ProductOptionsComponent {
   public productSizeChanged(productSize: any): void {
     this.selectedSize.emit(productSize.target.value);
   }
+
+  public scale = 1;
+
+  public changeScale(value: number) {
+    this.scale += value
+  } 
 }

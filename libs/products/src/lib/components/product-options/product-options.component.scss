@@ -1,0 +1,32 @@
+.product-options {
+    &_container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &_sizing-arrows {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+    }
+
+    &_selection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.sizing_arrow {
+    &-upward {
+        font-size: 48px;
+        width: 48px;
+        height: 48px;
+    }
+
+    &-downward {
+        font-size: 48px;
+        width: 48px;
+        height: 48px;
+    }
+}
