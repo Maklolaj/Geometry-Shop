@@ -7,7 +7,7 @@
       (pointerover)="hovered = true"
       (pointerout)="hovered = false"
       (click)="active = !active"
-      [scale]="active ? 1.5 : 1"
+      [scale]="size"
       (beforeRender)="onBeforeRender($event.object)"
       [position]="[0, -1, 0]"
       [ngSwitch]="(currentProduct | async)?.name"

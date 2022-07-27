@@ -22,7 +22,14 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsComponent implements OnInit {
-  @Input() position?: NgtVector3;
+
+  public size: number = 1;
+  
+  public hovered = false;
+
+  public active = false;
+
+  public selectedProductColor = 'tomato';
 
   currentProduct: Observable<Product> = this.productStore.pipe(
     select(ProductSelectors.selectCurrentProduct)
@@ -41,18 +48,11 @@ export class ProductsComponent implements OnInit {
     private basketStore: Store<ProductState>
   ) {}
 
-  hovered = false;
-  active = false;
-
-  selectedProductColor = 'tomato';
-
   ngOnInit() {}
 
   onBeforeRender(cube: Mesh) {
     cube.rotateY(0.01);
     cube.rotateX(0.01);
-    // cube.rotation.x += 0.01;
-    // cube.rotation.y += 0.01;
     cube.rotateZ(0.01);
   }
 
@@ -61,6 +61,7 @@ export class ProductsComponent implements OnInit {
   }
 
   public selectedSize(size: number): void {
+    this.size = size;
     console.log(size);
   }
 }

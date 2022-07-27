@@ -39,15 +39,13 @@ export class ProductOptionsComponent {
     return colorName
   }
 
-  public productSizeChanged(productSize: any): void {
-    this.selectedSize.emit(productSize.target.value);
-  }
-
   public onIncreaseSize(): void {
     this.scale < 2 ? this.setScale = this.getScale + 0.1 : null
+    this.selectedSize.emit(this.getScale)
   }
 
   public onDecreaseSize(): void {
     this.scale > 0.5 ? this.setScale = this.getScale - 0.1 : null
+    this.selectedSize.emit(this.getScale)
   }
 }
