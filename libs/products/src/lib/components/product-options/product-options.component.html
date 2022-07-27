@@ -1,20 +1,21 @@
 <div class="product-options_container">
   <div class="product-options_selection">
+    
     <div class="product-options_sizing-arrows">
-      <button mat-icon-button class="input-square">
+      <button mat-icon-button class="input-square" (click)="onIncreaseSize()">
         <mat-icon class="sizing_arrow-upward">arrow_upward</mat-icon>
       </button>
-      <button mat-icon-button class="input-square">
+      <button mat-icon-button class="input-square" (click)="onDecreaseSize()">
         <mat-icon class="sizing_arrow-downward">arrow_downward</mat-icon>
       </button>
     </div>
+
     <div class="product-options_selection-label">
       <span>Seletected size: </span>
-      <span> {{ scale }}</span>
+      <span> {{ getScale | number:'1.1-3'}}</span>
     </div>
+    
   </div>
-
-
 
   <div class="product-options_color-picker">
     <span class="product-options_color-picker-label" >Color picker</span>

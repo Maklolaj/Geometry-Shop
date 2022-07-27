@@ -12,13 +12,24 @@ import { select, Store } from '@ngrx/store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductOptionsComponent {
-  color = 'red';
+
+  private scale = 1;
 
   @Output() 
   selectedColor: EventEmitter<string> = new EventEmitter();
 
   @Output()
   selectedSize: EventEmitter<number> = new EventEmitter();
+  
+  public color = '#8393d0';
+
+  public get getScale() {
+    return this.scale
+  }
+
+  public set setScale(x:number) {
+    this.scale = x
+  }
 
   constructor(private store: Store<ProductState>) {}
 
@@ -32,9 +43,11 @@ export class ProductOptionsComponent {
     this.selectedSize.emit(productSize.target.value);
   }
 
-  public scale = 1;
+  public onIncreaseSize(): void {
+    this.scale < 2 ? this.setScale = this.getScale + 0.1 : null
+  }
 
-  public changeScale(value: number) {
-    this.scale += value
-  } 
+  public onDecreaseSize(): void {
+    this.scale > 0.5 ? this.setScale = this.getScale - 0.1 : null
+  }
 }
