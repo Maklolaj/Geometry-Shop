@@ -1,23 +1,28 @@
 <div class="product-options_container">
-  <div class="product-options_sizing-arrows">
-    <button mat-icon-button>
-      <mat-icon class="sizing_arrow-upward">arrow_upward</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon class="sizing_arrow-downward">arrow_downward</mat-icon>
-    </button>
-  </div>
-
   <div class="product-options_selection">
-    <span>Seletected size:</span>
-    <span> {{ scale }}</span>
+    <div class="product-options_sizing-arrows">
+      <button mat-icon-button class="input-square">
+        <mat-icon class="sizing_arrow-upward">arrow_upward</mat-icon>
+      </button>
+      <button mat-icon-button class="input-square">
+        <mat-icon class="sizing_arrow-downward">arrow_downward</mat-icon>
+      </button>
+    </div>
+    <div class="product-options_selection-label">
+      <span>Seletected size: </span>
+      <span> {{ scale }}</span>
+    </div>
   </div>
 
-  <input
+
+
+  <div class="product-options_color-picker">
+    <span class="product-options_color-picker-label" >Color picker</span>
+    <input
     [(colorPicker)]="color"
     [style.background]="color"
     (colorPickerChange)=colorChanged($event)
-  />
-  <div>{{ color }}</div>
+    class="product-options_color-picker-palette"
+    />
+  </div>
 </div>
-

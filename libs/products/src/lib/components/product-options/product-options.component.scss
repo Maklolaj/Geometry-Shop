@@ -2,6 +2,8 @@
     &_container {
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
+        margin-top: 20px;
     }
 
     &_sizing-arrows {
@@ -10,10 +12,31 @@
         padding-top: 8px;
     }
 
-    &_selection {
+    &_selection-label {
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-left: 20px;
+        padding-top: 20px;
+        padding-right: 10px;
+    }
+
+    &_selection {
+        display: flex;
+        flex-direction: row;
+        border-style: outset;
+    }
+
+    &_color-picker {
+
+        &-palette {
+            width: 60px;
+            height: 60px;
+        }
+
+        &-label {
+            margin-right: 10px;
+        }
     }
 }
 
@@ -29,4 +52,8 @@
         width: 48px;
         height: 48px;
     }
+}
+
+.input-square {
+    border: 1px;
 }
