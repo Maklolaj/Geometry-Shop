@@ -4,7 +4,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { Product } from '@geometry-shop/domain';
+import { CustomProduct, Product } from '@geometry-shop/domain';
 import { compose, select, Store } from '@ngrx/store';
 import {
   BasketActions,
@@ -48,10 +48,12 @@ export class ProductItemComponent implements OnInit {
   }
 
   public addToBasket(product: Product): void {
+    // Add Product options store
     this.basketStore.dispatch(BasketActions.addToBasket({ product }));
   }
 
   public removeFromBasket(product: Product): void {
+    // Add Product options store
     this.basketStore.dispatch(BasketActions.removeFromBasket({ product }));
   }
 }
