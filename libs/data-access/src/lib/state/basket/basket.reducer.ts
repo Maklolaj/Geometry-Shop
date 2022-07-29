@@ -1,12 +1,12 @@
-import { Product } from '@geometry-shop/domain';
+import { CustomProduct } from '@geometry-shop/domain';
 import { createReducer, on, State } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { BasketActions } from '@geometry-shop/data-access';
 
-export interface BasketState extends EntityState<Product> {}
+export interface BasketState extends EntityState<CustomProduct> {}
 
-export const basketAdapter: EntityAdapter<Product> = createEntityAdapter<Product>({
-  selectId: (product: Product) => product.productId,
+export const basketAdapter: EntityAdapter<CustomProduct> = createEntityAdapter<CustomProduct>({
+  selectId: (product: CustomProduct) => product.productId,
 });
 
 export const initialProductsState: BasketState = basketAdapter.getInitialState({});
