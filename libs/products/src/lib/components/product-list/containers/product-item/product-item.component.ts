@@ -22,7 +22,6 @@ import { Observable, of, take, mergeMap, map } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductItemComponent implements OnInit {
-  
   @Input() product!: Product;
   constructor(
     private readonly productStore: Store<ProductState>,
@@ -47,13 +46,15 @@ export class ProductItemComponent implements OnInit {
     this.productStore.dispatch(ProductActions.selectProductId({ productId }));
   }
 
-  public addToBasket(product: Product): void {
+  public addToBasket(value: Product): void {
     // Add Product options store
+    const product: CustomProduct = { ...value, size: 10, color: 'red' };
     this.basketStore.dispatch(BasketActions.addToBasket({ product }));
   }
 
-  public removeFromBasket(product: Product): void {
+  public removeFromBasket(value: Product): void {
     // Add Product options store
+    const product: CustomProduct = { ...value, size: 10, color: 'red' };
     this.basketStore.dispatch(BasketActions.removeFromBasket({ product }));
   }
 }

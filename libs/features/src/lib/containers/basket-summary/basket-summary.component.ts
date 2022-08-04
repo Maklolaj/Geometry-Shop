@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '@geometry-shop/domain';
+import { CustomProduct, Product } from '@geometry-shop/domain';
 import { BasketState, BasketSelectors } from '@geometry-shop/data-access';
 import { select, Store } from '@ngrx/store';
 import { Observable, of, take } from 'rxjs';
@@ -10,31 +10,38 @@ import { Observable, of, take } from 'rxjs';
   styleUrls: ['./basket-summary.component.scss'],
 })
 export class BasketSummaryComponent implements OnInit {
-
-  basketItems: Observable<Product[]> = of([]);
+  basketItems: Observable<CustomProduct[]> = of([]);
 
   public totalCost: number = 0;
 
   constructor(private readonly basketStore: Store<BasketState>) {}
-  
+
   ngOnInit(): void {
-    this.basketItems = this.basketStore
-      .pipe(select(BasketSelectors.selectAllBasketProducts))
-    this.basketItems.pipe(take(1)).subscribe( (products:Product[]) => {
-      this.totalCost = products.map(t => t.price).reduce((acc, value) => acc + value, 0);
-    })
+    this.basketItems = this.basketStore.pipe(
+      select(BasketSelectors.selectAllBasketProducts)
+    );
+    this.basketItems.pipe(take(1)).subscribe((products: CustomProduct[]) => {
+      this.totalCost = products
+        .map((t) => t.price)
+        .reduce((acc, value) => acc + value, 0);
+    });
   }
 
   columns = [
     {
       columnDef: 'name',
       header: 'Name',
-      cell: (element: Product) => `${element.name}`,
+      cell: (element: CustomProduct) => `${element.name}`,
     },
     {
       columnDef: 'price',
       header: 'Price',
-      cell: (element: Product) => `${element.price}`,
+      cell: (element: CustomProduct) => `${element.price}`,
+    },
+    {
+      columnDef: 'color',
+      header: 'Color',
+      cell: (element: CustomProduct) => `${element.color}`,
     },
   ];
   displayedColumns = this.columns.map((c) => c.columnDef);
