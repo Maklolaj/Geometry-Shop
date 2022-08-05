@@ -1,9 +1,20 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { NgtVector3 } from '@angular-three/core';
 import { Mesh } from 'three';
 import { Observable } from 'rxjs';
-import { ProductState } from '@geometry-shop/data-access';
+import {
+  ProductOptionsActions,
+  ProductState,
+} from '@geometry-shop/data-access';
 import { select, Store } from '@ngrx/store';
+import { ProductOptionsState } from 'libs/data-access/src/lib/state/productOptions/productOptions.reducer';
+import { ProductOptions } from '@geometry-shop/domain';
 
 @Component({
   selector: 'geometry-shop-product-options',
@@ -12,40 +23,49 @@ import { select, Store } from '@ngrx/store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductOptionsComponent {
+  private productOptions: ProductOptions = {
+    size: 1,
+    color: '#8393d0',
+  };
 
-  private scale = 1;
-
-  @Output() 
-  selectedColor: EventEmitter<string> = new EventEmitter();
-
-  @Output()
-  selectedSize: EventEmitter<number> = new EventEmitter();
-  
-  public color = '#8393d0';
-
-  public get getScale() {
-    return this.scale
+  get getColor() {
+    return this.productOptions.color;
   }
 
-  public set setScale(x:number) {
-    this.scale = x
+  get getSize() {
+    return this.productOptions.size;
   }
 
-  constructor(private store: Store<ProductState>) {}
+  constructor(private productOptionsStore: Store<ProductOptionsState>) {}
 
-  public colorChanged(colorName: string): string {
-    this.color = colorName
-    this.selectedColor.emit(colorName);
-    return colorName
+  public colorChanged(colorName: string): void {
+    this.productOptions.color = colorName;
+    this.productOptionsStore.dispatch(
+      ProductOptionsActions.addProductOptions({
+        productOptions: this.productOptions,
+      })
+    );
   }
 
   public onIncreaseSize(): void {
-    this.scale < 2 ? this.setScale = this.getScale + 0.1 : null
-    this.selectedSize.emit(this.getScale)
+    if (this.productOptions.size < 2) {
+      this.productOptions.size + 0.1;
+      this.productOptionsStore.dispatch(
+        ProductOptionsActions.addProductOptions({
+          productOptions: this.productOptions,
+        })
+      );
+    }
   }
 
   public onDecreaseSize(): void {
-    this.scale > 0.5 ? this.setScale = this.getScale - 0.1 : null
-    this.selectedSize.emit(this.getScale)
+    if (this.productOptions.size > 0.5) {
+      this.productOptions.size - 0.1;
+      this.productOptionsStore.dispatch(
+        ProductOptionsActions.addProductOptions({
+          productOptions: this.productOptions,
+        })
+      );
+    }
   }
 }
