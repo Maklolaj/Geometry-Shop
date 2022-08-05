@@ -18,8 +18,8 @@
   <div class="product-options_color-picker">
     <span class="product-options_color-picker-label">Color picker</span>
     <input
-      [(colorPicker)]="getColor"
-      [style.background]="getColor"
+      [(colorPicker)]="color"
+      [style.background]="color"
       (colorPickerChange)="colorChanged($event)"
       class="product-options_color-picker-palette"
     />

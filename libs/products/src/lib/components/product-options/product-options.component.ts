@@ -23,14 +23,22 @@ import { ProductOptions } from '@geometry-shop/domain';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductOptionsComponent {
-  private productOptions: ProductOptions = {
+  color = '#8393d0';
+
+  public productOptions: ProductOptions = {
     size: 1,
-    color: '#8393d0',
+    color: '',
   };
 
-  get getColor() {
-    return this.productOptions.color;
-  }
+  // get getColor() {
+  //   console.log(`get ${this.productOptions.color}`);
+  //   return this.productOptions.color;
+  // }
+
+  // set setColor(colorx: string) {
+  //   console.log(`set ${colorx}`);
+  //   this.productOptions.color = colorx;
+  // }
 
   get getSize() {
     return this.productOptions.size;
@@ -38,8 +46,9 @@ export class ProductOptionsComponent {
 
   constructor(private productOptionsStore: Store<ProductOptionsState>) {}
 
-  public colorChanged(colorName: string): void {
-    this.productOptions.color = colorName;
+  public colorChanged(color: string): void {
+    this.productOptions.color = 'nigger';
+    console.log(`colorCahnged ${this.productOptions.color}`);
     this.productOptionsStore.dispatch(
       ProductOptionsActions.addProductOptions({
         productOptions: this.productOptions,
