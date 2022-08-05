@@ -22,14 +22,12 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsComponent implements OnInit {
-
-  public size: number = 1;
-  
   public hovered = false;
 
   public active = false;
 
-  public selectedProductColor = 'tomato';
+  size = 1; // add store
+  selectedProductColor = 'orange'; //add store
 
   currentProduct: Observable<Product> = this.productStore.pipe(
     select(ProductSelectors.selectCurrentProduct)
@@ -54,14 +52,5 @@ export class ProductsComponent implements OnInit {
     cube.rotateY(0.01);
     cube.rotateX(0.01);
     cube.rotateZ(0.01);
-  }
-
-  public selectedColor(color: string): void {
-    this.selectedProductColor = color;
-  }
-
-  public selectedSize(size: number): void {
-    this.size = size;
-    console.log(size);
   }
 }

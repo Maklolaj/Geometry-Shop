@@ -66,10 +66,7 @@
     >
     <span> Products in basket: {{ (productsInBasket | async)?.length }}</span>
     <span> Total price: {{ totalPrice | async }}</span>
-    <geometry-shop-product-options
-      (selectedColor)="selectedColor($event)"
-      (selectedSize)="selectedSize($event)"
-    ></geometry-shop-product-options>
+    <geometry-shop-product-options></geometry-shop-product-options>
   </div>
 </div>
 <geometry-shop-product-list></geometry-shop-product-list>
