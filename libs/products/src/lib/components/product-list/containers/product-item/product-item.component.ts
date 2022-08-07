@@ -12,8 +12,10 @@ import {
   ProductActions,
   ProductState,
   BasketState,
+  ProductOptionsState,
+  ProductOptionsSelectors,
 } from '@geometry-shop/data-access';
-import { Observable, of, map } from 'rxjs';
+import { Observable, of, map, take } from 'rxjs';
 
 @Component({
   selector: 'geometry-shop-product-item',
@@ -25,7 +27,8 @@ export class ProductItemComponent implements OnInit {
   @Input() product!: Product;
   constructor(
     private readonly productStore: Store<ProductState>,
-    private readonly basketStore: Store<BasketState>
+    private readonly basketStore: Store<BasketState>,
+    private readonly productOptionsStore: Store<ProductOptionsState>,
   ) {}
 
   isInBasket: Observable<boolean> = of(false);
@@ -46,15 +49,29 @@ export class ProductItemComponent implements OnInit {
     this.productStore.dispatch(ProductActions.selectProductId({ productId }));
   }
 
-  public addToBasket(value: Product): void {
-    // Add Product options store
-    const product: CustomProduct = { ...value, size: 10, color: 'red' };
-    this.basketStore.dispatch(BasketActions.addToBasket({ product }));
+  public addToBasket(value: Product): void { 
+    this.productOptionsStore.select(ProductOptionsSelectors.selectProductOptions).pipe(
+      take(1),
+      ).subscribe((productOptionsState)=>{
+        const product: CustomProduct = { 
+          ...value,
+          size: productOptionsState.productOptions.size,
+          color: productOptionsState.productOptions.color,
+        };
+        this.basketStore.dispatch(BasketActions.addToBasket({ product }));
+      })
   }
 
   public removeFromBasket(value: Product): void {
-    // Add Product options store
-    const product: CustomProduct = { ...value, size: 10, color: 'red' };
-    this.basketStore.dispatch(BasketActions.removeFromBasket({ product }));
+    this.productOptionsStore.select(ProductOptionsSelectors.selectProductOptions).pipe(
+      take(1),
+      ).subscribe((productOptionsState)=>{
+        const product: CustomProduct = { 
+          ...value,
+          size: productOptionsState.productOptions.size,
+          color: productOptionsState.productOptions.color,
+        };
+        this.basketStore.dispatch(BasketActions.removeFromBasket({ product }));
+      })
   }
 }
