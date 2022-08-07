@@ -6,14 +6,17 @@ import {
 } from '@angular/core';
 import { NgtVector3 } from '@angular-three/core';
 import { Curve, Mesh } from 'three';
-import { Product } from '@geometry-shop/domain';
+import { Product, ProductOptions } from '@geometry-shop/domain';
 import { select, Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';
 import {
   ProductSelectors,
   BasketSelectors,
   ProductState,
+  ProductOptionsSelectors,
 } from '@geometry-shop/data-access';
+import { ProductOptionsState } from '@geometry-shop/data-access';
+import { Dictionary } from '@ngrx/entity';
 
 @Component({
   selector: 'geometry-shop-products',
@@ -24,10 +27,11 @@ import {
 export class ProductsComponent implements OnInit {
   public hovered = false;
 
-  public active = false;
+  public active = false
 
-  size = 1; // add store
-  selectedProductColor = 'orange'; //add store
+  public size!: number;
+
+  public selectedProductColor!:string;
 
   currentProduct: Observable<Product> = this.productStore.pipe(
     select(ProductSelectors.selectCurrentProduct)
@@ -41,12 +45,27 @@ export class ProductsComponent implements OnInit {
     select(BasketSelectors.selectBasketBalance)
   );
 
+  productOptions: Observable<ProductOptionsState> = this.productOptionsStore.pipe(
+    select(ProductOptionsSelectors.selectProductOptions)
+  );
+
   constructor(
     private productStore: Store<ProductState>,
-    private basketStore: Store<ProductState>
+    private basketStore: Store<ProductState>,
+    private productOptionsStore: Store<ProductOptionsState>,
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.setupProductOptionsSubscription();
+  }
+
+  private setupProductOptionsSubscription() {
+    this.productOptions.pipe(
+      ).subscribe((productOption: ProductOptionsState) => {
+        this.size = productOption.productOptions.size
+        this.selectedProductColor = productOption.productOptions.color
+      });
+  }
 
   onBeforeRender(cube: Mesh) {
     cube.rotateY(0.01);
