@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { CustomProduct, Product } from '@geometry-shop/domain';
-import { compose, select, Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import {
   BasketActions,
   BasketSelectors,
@@ -13,7 +13,7 @@ import {
   ProductState,
   BasketState,
 } from '@geometry-shop/data-access';
-import { Observable, of, take, mergeMap, map } from 'rxjs';
+import { Observable, of, map } from 'rxjs';
 
 @Component({
   selector: 'geometry-shop-product-item',

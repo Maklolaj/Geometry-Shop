@@ -4,10 +4,6 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { ProductOptionsActions } from '@geometry-shop/data-access';
 import { ProductOptionsState } from './productOptions.state';
 
-// export interface ProductOptionsState {
-//   productOptions: ProductOptions;
-// }
-
 const productOptions: ProductOptions = {
   size:1,
   color: '#5767a1'

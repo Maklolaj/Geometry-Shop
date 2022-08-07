@@ -22,6 +22,7 @@ export * from './lib/state/auth/auth.selectors';
 export * as ProductOptionsActions from './lib/state/productOptions/productOptions.actions';
 export * as ProductOptionsReducer from './lib/state/productOptions/productOptions.reducer';
 export * as ProductOptionsSelectors from './lib/state/productOptions/productOptions.selectors';
+export * from './lib/state/productOptions/productOptions.state';
 
 // Products Services
 export * from './lib/http-service/products/products.service';

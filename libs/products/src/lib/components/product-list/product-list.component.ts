@@ -1,8 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
-  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';

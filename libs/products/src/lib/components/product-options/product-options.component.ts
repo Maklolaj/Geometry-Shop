@@ -1,20 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
-  Input,
-  Output,
 } from '@angular/core';
-import { NgtVector3 } from '@angular-three/core';
-import { Mesh } from 'three';
-import { Observable } from 'rxjs';
 import {
   ProductOptionsActions,
-  ProductState,
 } from '@geometry-shop/data-access';
-import { select, Store } from '@ngrx/store';
-import { ProductOptionsState } from 'libs/data-access/src/lib/state/productOptions/productOptions.reducer';
-import { ProductOptions } from '@geometry-shop/domain';
+import { Store } from '@ngrx/store';
+import { ProductOptionsState } from '@geometry-shop/data-access';
 
 @Component({
   selector: 'geometry-shop-product-options',
@@ -38,7 +30,6 @@ export class ProductOptionsComponent {
   constructor(private productOptionsStore: Store<ProductOptionsState>) {}
 
   public colorChanged(color: string): void {
-    // slow down emitting new colors? 
     this.productOptionsStore.dispatch(
       ProductOptionsActions.addProductOptions({
         productOptions: {
