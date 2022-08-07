@@ -38,7 +38,7 @@ import { MaterialModule } from '@geometry-shop/material';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductItemComponent } from './components/product-list/containers/product-item/product-item.component';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { ProductResolver } from '@geometry-shop/data-access';
+import { ProductOptionsReducer, ProductResolver } from '@geometry-shop/data-access';
 import { ProductsService } from '@geometry-shop/data-access';
 import { BasketReducer } from '@geometry-shop/data-access';
 import { ProductReducer } from '@geometry-shop/data-access';
@@ -82,6 +82,7 @@ import { NgtOrthographicCameraModule } from '@angular-three/core/cameras';
     ]),
     StoreModule.forFeature('products', ProductReducer.productsReducer),
     StoreModule.forFeature('basket', BasketReducer.basketReducer),
+    StoreModule.forFeature('productOptions', ProductOptionsReducer.productOptionsReducer),
     MaterialModule,
     ColorPickerModule,
   ],

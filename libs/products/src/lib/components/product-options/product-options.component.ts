@@ -23,56 +23,55 @@ import { ProductOptions } from '@geometry-shop/domain';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductOptionsComponent {
+  private size: number = 1;
+
   color = '#8393d0';
 
-  public productOptions: ProductOptions = {
-    size: 1,
-    color: '',
-  };
-
-  // get getColor() {
-  //   console.log(`get ${this.productOptions.color}`);
-  //   return this.productOptions.color;
-  // }
-
-  // set setColor(colorx: string) {
-  //   console.log(`set ${colorx}`);
-  //   this.productOptions.color = colorx;
-  // }
-
   get getSize() {
-    return this.productOptions.size;
+    return this.size;
+  }
+
+  set setSize(newSize: number) {
+    this.size = newSize;
   }
 
   constructor(private productOptionsStore: Store<ProductOptionsState>) {}
 
   public colorChanged(color: string): void {
-    this.productOptions.color = 'nigger';
-    console.log(`colorCahnged ${this.productOptions.color}`);
+    // slow down emitting new colors? 
     this.productOptionsStore.dispatch(
       ProductOptionsActions.addProductOptions({
-        productOptions: this.productOptions,
+        productOptions: {
+          size: this.size,
+          color: this.color
+        }
       })
     );
   }
 
   public onIncreaseSize(): void {
-    if (this.productOptions.size < 2) {
-      this.productOptions.size + 0.1;
+    if (this.getSize < 2) {
+      this.setSize = this.getSize + 0.1;
       this.productOptionsStore.dispatch(
         ProductOptionsActions.addProductOptions({
-          productOptions: this.productOptions,
+          productOptions: {
+            size: this.size,
+            color: this.color
+          }
         })
       );
     }
   }
 
   public onDecreaseSize(): void {
-    if (this.productOptions.size > 0.5) {
-      this.productOptions.size - 0.1;
+    if (this.getSize > 0.5) {
+      this.setSize = this.getSize - 0.1;
       this.productOptionsStore.dispatch(
         ProductOptionsActions.addProductOptions({
-          productOptions: this.productOptions,
+          productOptions: {
+            size: this.size,
+            color: this.color
+          }
         })
       );
     }
