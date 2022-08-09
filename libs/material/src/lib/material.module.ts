@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSelectModule,
     ScrollingModule,
     MatPaginatorModule,
+    MatTooltipModule,
   ],
   exports: [
     FlexLayoutModule,
@@ -46,6 +48,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSelectModule,
     ScrollingModule,
     MatPaginatorModule,
+    MatTooltipModule,
   ],
 })
 export class MaterialModule {}
