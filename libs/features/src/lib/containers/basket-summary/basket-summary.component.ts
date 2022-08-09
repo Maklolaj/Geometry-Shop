@@ -22,8 +22,7 @@ export class BasketSummaryComponent implements OnInit {
     );
     this.basketItems.pipe(take(1)).subscribe((products: CustomProduct[]) => {
       this.totalCost = products
-        .map((t) => t.price)
-        .reduce((acc, value) => acc + value, 0);
+        .reduce((acc, product) => acc + product.price * product.size, 0);
     });
   }
 
@@ -42,6 +41,11 @@ export class BasketSummaryComponent implements OnInit {
       columnDef: 'color',
       header: 'Color',
       cell: (element: CustomProduct) => `${element.color}`,
+    },
+    {
+      columnDef: 'size',
+      header: 'Size',
+      cell: (element: CustomProduct) => `${element.size}`,
     },
   ];
   displayedColumns = this.columns.map((c) => c.columnDef);
