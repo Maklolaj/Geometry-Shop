@@ -41,10 +41,6 @@ export class ProductsComponent implements OnInit {
     select(BasketSelectors.selectAllBasketProducts)
   );
 
-  totalPrice: Observable<number> = this.basketStore.pipe(
-    select(BasketSelectors.selectBasketBalance)
-  );
-
   productOptions: Observable<ProductOptionsState> = this.productOptionsStore.pipe(
     select(ProductOptionsSelectors.selectProductOptions)
   );
