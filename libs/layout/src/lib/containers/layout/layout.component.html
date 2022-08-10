@@ -1,8 +1,11 @@
 <mat-toolbar color="primary" class="layout-login-toolbar">
   <span>Customer Portal</span>
   <div class="right-nav">
-    <span *ngIf="user$ | async as user">
+    <div *ngIf="user$ | async as user">
       <button mat-button>Hello {{ user.name }}!</button>
+        <button mat-icon-button>
+          <mat-icon>account_circle</mat-icon>
+        </button>
       <button
         mat-button
         [routerLink]="['/products']"
@@ -20,7 +23,7 @@
       <button mat-button [routerLink]="['/auth/login']" (click)="logout()">
         Logout
       </button>
-    </span>
+    </div>
   </div>
 </mat-toolbar>
 <ng-content></ng-content>

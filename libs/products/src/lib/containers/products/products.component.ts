@@ -16,7 +16,6 @@ import {
   ProductOptionsSelectors,
 } from '@geometry-shop/data-access';
 import { ProductOptionsState } from '@geometry-shop/data-access';
-import { Dictionary } from '@ngrx/entity';
 
 @Component({
   selector: 'geometry-shop-products',
