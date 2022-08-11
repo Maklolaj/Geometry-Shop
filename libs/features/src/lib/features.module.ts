@@ -4,6 +4,7 @@ import { BasketSummaryComponent } from './containers/basket-summary/basket-summa
 import { MaterialModule } from '@geometry-shop/material';
 import { StoreModule } from '@ngrx/store';
 import { BasketReducer } from '@geometry-shop/data-access';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,7 @@ import { BasketReducer } from '@geometry-shop/data-access';
     MaterialModule,
     StoreModule.forFeature('basket', BasketReducer.basketReducer),
   ],
-  declarations: [BasketSummaryComponent],
+  declarations: [BasketSummaryComponent, UserProfileComponent],
   exports: [BasketSummaryComponent],
 })
 export class FeaturesModule {}
