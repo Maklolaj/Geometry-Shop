@@ -1,1 +1,46 @@
 <p>user-profile works!</p>
+
+
+<div *ngIf="formState$ | async as formState">
+    <form [ngrxFormState]="formState"
+        (submit)="submit()">
+    <!-- Name -->
+    <div>
+        <mat-form-field>
+            <input matInput
+                    placeholder="User Name"
+                    [ngrxFormControlState]="formState.controls.name">
+            <mat-error *ngIf="formState.errors['_name']?.required">
+            A user name is required
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <!-- Surname -->
+    <!-- <div>
+        <mat-form-field>
+            <input matInput
+                    placeholder="User Surname"
+                    [ngrxFormControlState]="formState$.controls.surname">
+            <mat-error *ngIf="formState$.errors._surname?.required">
+            A surname is required
+            </mat-error>
+        </mat-form-field>
+    </div> -->
+
+    <!-- Date of birth -->
+    <!-- <div>
+        <mat-form-field>
+          <input matInput
+                 [matDatepicker]="picker"
+                 placeholder="Date of Birth"
+                 [ngrxFormControlState]="formState$.controls.dateOfBirth"
+                 [ngrxValueConverter]="dateValueConverter">
+          <mat-datepicker-toggle matSuffix
+                                 [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div> -->
+</form>
+
+</div>
