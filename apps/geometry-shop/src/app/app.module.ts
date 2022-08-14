@@ -12,6 +12,7 @@ import { AuthGuard } from '@geometry-shop/data-access'
 import { BasketSummaryComponent } from '@geometry-shop/features';
 import { LayoutModule } from '@geometry-shop/layout';
 import { from } from 'rxjs';
+import { UserProfileComponent } from 'libs/features/src/lib/components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +38,15 @@ import { from } from 'rxjs';
               (module) => module.FeaturesModule,
             ),
           component: BasketSummaryComponent,
+          canActivate: [AuthGuard],
+        },
+        {
+          path: 'userProfile',
+          loadChildren: () =>
+            import('@geometry-shop/features').then(
+              (module) => module.FeaturesModule,
+            ),
+          component: UserProfileComponent,
           canActivate: [AuthGuard],
         },
       ],

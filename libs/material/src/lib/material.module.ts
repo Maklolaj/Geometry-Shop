@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ScrollingModule,
     MatPaginatorModule,
     MatTooltipModule,
+    MatDatepickerModule,
   ],
   exports: [
     FlexLayoutModule,
@@ -49,6 +51,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ScrollingModule,
     MatPaginatorModule,
     MatTooltipModule,
+    MatDatepickerModule,
   ],
 })
 export class MaterialModule {}
