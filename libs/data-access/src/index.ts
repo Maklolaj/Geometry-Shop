@@ -35,3 +35,7 @@ export * from './lib/utils/local-storage-serive';
 
 // Auth Guard
 export * from './lib/guards/auth/auth.guard';
+
+
+// User Profile 
+export * from './lib/state/userProfile/userProfile.reducer'

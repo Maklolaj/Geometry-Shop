@@ -3,7 +3,9 @@
   <div class="right-nav">
     <div *ngIf="user$ | async as user">
       <button mat-button>Hello {{ user.name }}!</button>
-        <button mat-icon-button>
+        <button 
+          mat-icon-button
+          [routerLink]="['/userProfile']">
           <mat-icon>account_circle</mat-icon>
         </button>
       <button
