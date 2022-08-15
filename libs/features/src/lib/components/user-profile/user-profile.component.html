@@ -1,31 +1,33 @@
 <p>user-profile works!</p>
 
-
 <div *ngIf="formState$ | async as formState">
-    <form [ngrxFormState]="formState"
-        (submit)="submit()">
+  <mat-form-field [ngrxFormState]="formState" (submit)="submit()">
     <!-- Name -->
     <div>
-        <mat-form-field>
-            <input matInput
-                    placeholder="User Name"
-                    [ngrxFormControlState]="formState.controls.name">
-            <mat-error *ngIf="formState.controls.name.errors">
-            A user name is required
-            </mat-error>
-        </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="User Name"
+          [ngrxFormControlState]="formState.controls.name"
+        />
+        <mat-error *ngIf="formState.errors['_name']?.required">
+          A user name is required
+        </mat-error>
+      </mat-form-field>
     </div>
 
     <!-- Surname -->
     <div>
-        <mat-form-field>
-            <input matInput
-                    placeholder="User Surname"
-                    [ngrxFormControlState]="formState.controls.surname">
-            <mat-error *ngIf="formState.errors['surname']?.required">
-            A surname is required
-            </mat-error>
-        </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="User Surname"
+          [ngrxFormControlState]="formState.controls.surname"
+        />
+        <mat-error *ngIf="formState.errors['surname']?.required">
+          A surname is required
+        </mat-error>
+      </mat-form-field>
     </div>
 
     <!-- Date of birth -->
@@ -42,21 +44,26 @@
         </mat-form-field>
     </div> -->
     <div>
-        <button mat-raised-button
-                color="primary"
-                type="submit"
-                [disabled]="formState.isInvalid && formState.isSubmitted">
-          Submit
-        </button>
-        <button mat-raised-button
-                type="button"
-                [disabled]="formState.isPristine
-                            && formState.isUntouched
-                            && formState.isUnsubmitted"
-                (click)="reset()">
-          Reset
-        </button>
-      </div>
-</form>
-
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="formState.isInvalid && formState.isSubmitted"
+      >
+        Submit
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        [disabled]="
+          formState.isPristine &&
+          formState.isUntouched &&
+          formState.isUnsubmitted
+        "
+        (click)="reset()"
+      >
+        Reset
+      </button>
+    </div>
+  </mat-form-field>
 </div>
