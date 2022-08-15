@@ -10,23 +10,23 @@
             <input matInput
                     placeholder="User Name"
                     [ngrxFormControlState]="formState.controls.name">
-            <mat-error *ngIf="formState.errors['_name']?.required">
+            <mat-error *ngIf="formState.controls.name.errors">
             A user name is required
             </mat-error>
         </mat-form-field>
     </div>
 
     <!-- Surname -->
-    <!-- <div>
+    <div>
         <mat-form-field>
             <input matInput
                     placeholder="User Surname"
-                    [ngrxFormControlState]="formState$.controls.surname">
-            <mat-error *ngIf="formState$.errors._surname?.required">
+                    [ngrxFormControlState]="formState.controls.surname">
+            <mat-error *ngIf="formState.errors['surname']?.required">
             A surname is required
             </mat-error>
         </mat-form-field>
-    </div> -->
+    </div>
 
     <!-- Date of birth -->
     <!-- <div>
@@ -41,6 +41,22 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
     </div> -->
+    <div>
+        <button mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="formState.isInvalid && formState.isSubmitted">
+          Submit
+        </button>
+        <button mat-raised-button
+                type="button"
+                [disabled]="formState.isPristine
+                            && formState.isUntouched
+                            && formState.isUnsubmitted"
+                (click)="reset()">
+          Reset
+        </button>
+      </div>
 </form>
 
 </div>
