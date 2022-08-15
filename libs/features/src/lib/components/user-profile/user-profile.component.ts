@@ -1,8 +1,20 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormValues, INITIAL_FORM_GROUP_STATE, SetSubmittedValueAction, UserProfileFormState } from '@geometry-shop/data-access';
+import {
+  FormValues,
+  INITIAL_FORM_GROUP_STATE,
+  SetSubmittedValueAction,
+  UserProfileFormState,
+} from '@geometry-shop/data-access';
 import { select, Store } from '@ngrx/store';
-import { FormGroupState, NgrxValueConverter, NgrxValueConverters, ResetAction, SetValueAction } from 'ngrx-forms';
-import { filter, map, Observable, take } from 'rxjs';
+import {
+  FormGroupState,
+  NgrxValueConverter,
+  NgrxValueConverters,
+  ResetAction,
+  SetValueAction,
+} from 'ngrx-forms';
+import { filter, map, Observable, take, tap } from 'rxjs';
+import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'geometry-shop-user-profile',
@@ -11,14 +23,17 @@ import { filter, map, Observable, take } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserProfileComponent implements OnInit {
-
   formState$: Observable<FormGroupState<FormValues>>;
 
   submittedValue$: Observable<FormValues | undefined>;
 
   constructor(private userProfileStore: Store<UserProfileFormState>) {
-    this.formState$ = userProfileStore.pipe(select(s => s.userProfile.formState));
-    this.submittedValue$ = userProfileStore.pipe(select(s => s.userProfile.submittedValue));
+    this.formState$ = userProfileStore.pipe(
+      select((s) => s.userProfile.formState)
+    );
+    this.submittedValue$ = userProfileStore.pipe(
+      select((s) => s.userProfile.submittedValue)
+    );
   }
 
   ngOnInit(): void {}
@@ -31,24 +46,40 @@ export class UserProfileComponent implements OnInit {
       }
 
       // the value provided by the date picker is in local time but we want UTC so we recreate the date as UTC
-      value = new Date(Date.UTC(value.getFullYear(), value.getMonth(), value.getDate()));
+      value = new Date(
+        Date.UTC(value.getFullYear(), value.getMonth(), value.getDate())
+      );
       return NgrxValueConverters.dateToISOString.convertViewToStateValue(value);
     },
-    convertStateToViewValue: NgrxValueConverters.dateToISOString.convertStateToViewValue,
+    convertStateToViewValue:
+      NgrxValueConverters.dateToISOString.convertStateToViewValue,
   };
 
   public reset() {
-    this.userProfileStore.dispatch(new SetValueAction(INITIAL_FORM_GROUP_STATE.id, INITIAL_FORM_GROUP_STATE.value));
-    this.userProfileStore.dispatch(new ResetAction(INITIAL_FORM_GROUP_STATE.id));
+    this.userProfileStore.dispatch(
+      new SetValueAction(
+        INITIAL_FORM_GROUP_STATE.id,
+        INITIAL_FORM_GROUP_STATE.value
+      )
+    );
+    this.userProfileStore.dispatch(
+      new ResetAction(INITIAL_FORM_GROUP_STATE.id)
+    );
   }
 
   public submit() {
-    this.formState$.pipe(
-      take(1),
-      filter(s => s.isValid),
-      map(fs => new SetSubmittedValueAction(fs.value)),
-    ).subscribe(this.userProfileStore);
+    this.formState$
+      .pipe(
+        take(1),
+        tap((x) => {
+          console.log(x);
+          console.log((x as any).errors);
+          //console.log((x as any).errors._name?.required ? true : false);
+          console.log(x.errors['_name']?.required ? 'Error' : 'No Error');
+        }),
+        filter((s) => s.isValid),
+        map((fs) => new SetSubmittedValueAction(fs.value))
+      )
+      .subscribe(this.userProfileStore);
   }
-
-
 }
