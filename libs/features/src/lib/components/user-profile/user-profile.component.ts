@@ -71,15 +71,14 @@ export class UserProfileComponent implements OnInit {
     this.formState$
       .pipe(
         take(1),
-        tap((x) => {
-          console.log(x);
-          console.log((x as any).errors);
-          //console.log((x as any).errors._name?.required ? true : false);
-          console.log(x.errors['_name']?.required ? 'Error' : 'No Error');
-        }),
         filter((s) => s.isValid),
         map((fs) => new SetSubmittedValueAction(fs.value))
       )
       .subscribe(this.userProfileStore);
   }
 }
+
+// TODO
+// 1.add email control
+// 2.apply some styling
+// 3.cleanup
