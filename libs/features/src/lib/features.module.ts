@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { BasketReducer, userProfileReducers } from '@geometry-shop/data-access';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { NgrxFormsModule } from 'ngrx-forms';
+import { CustomErrorStateMatcherDirective } from './components/error-state-matcher/error-state-matcher';
 
 @NgModule({
   imports: [
@@ -15,7 +16,11 @@ import { NgrxFormsModule } from 'ngrx-forms';
     StoreModule.forFeature('basket', BasketReducer.basketReducer),
     StoreModule.forFeature('userProfile', userProfileReducers),
   ],
-  declarations: [BasketSummaryComponent, UserProfileComponent],
-  exports: [BasketSummaryComponent],
+  declarations: [
+    BasketSummaryComponent,
+    UserProfileComponent,
+    CustomErrorStateMatcherDirective,
+  ],
+  exports: [BasketSummaryComponent, CustomErrorStateMatcherDirective],
 })
 export class FeaturesModule {}
