@@ -6,7 +6,8 @@ import { StoreModule } from '@ngrx/store';
 import { BasketReducer, userProfileReducers } from '@geometry-shop/data-access';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { NgrxFormsModule } from 'ngrx-forms';
-import { CustomErrorStateMatcherDirective } from './components/error-state-matcher/error-state-matcher';
+import { CustomErrorStateMatcherDirective } from './components/user-profile/error-state-matcher/error-state-matcher';
+import { NgrxMatSelectViewAdapter } from './components/user-profile/mat-select-view-adapter/mat-select-view-adapter';
 
 @NgModule({
   imports: [
@@ -20,7 +21,12 @@ import { CustomErrorStateMatcherDirective } from './components/error-state-match
     BasketSummaryComponent,
     UserProfileComponent,
     CustomErrorStateMatcherDirective,
+    NgrxMatSelectViewAdapter,
   ],
-  exports: [BasketSummaryComponent, CustomErrorStateMatcherDirective],
+  exports: [
+    BasketSummaryComponent,
+    CustomErrorStateMatcherDirective,
+    NgrxMatSelectViewAdapter,
+  ],
 })
 export class FeaturesModule {}

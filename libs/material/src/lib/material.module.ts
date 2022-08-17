@@ -13,8 +13,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -34,6 +37,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatPaginatorModule,
     MatTooltipModule,
     MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
   ],
   exports: [
     FlexLayoutModule,
@@ -52,6 +59,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatPaginatorModule,
     MatTooltipModule,
     MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
   ],
 })
 export class MaterialModule {}
