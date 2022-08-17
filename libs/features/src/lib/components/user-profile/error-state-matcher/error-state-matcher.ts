@@ -4,6 +4,8 @@ import { MatInput } from '@angular/material/input';
 import { MatSelect } from '@angular/material/select';
 import { FormControlState } from 'ngrx-forms';
 
+// Sadly the @angular/material error handling only properly integrates with @angular/forms out of the box.
+// To make it work with ngrx-forms I need to add a custom error state matcher.
 @Directive({
   selector: '[ngrxFormControlState]',
 })
