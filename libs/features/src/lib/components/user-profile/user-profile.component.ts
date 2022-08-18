@@ -13,8 +13,7 @@ import {
   ResetAction,
   SetValueAction,
 } from 'ngrx-forms';
-import { filter, map, Observable, take, tap } from 'rxjs';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { filter, map, Observable, take } from 'rxjs';
 
 @Component({
   selector: 'geometry-shop-user-profile',
@@ -77,8 +76,3 @@ export class UserProfileComponent implements OnInit {
       .subscribe(this.userProfileStore);
   }
 }
-
-// TODO
-// 1.add email control
-// 2.apply some styling
-// 3.cleanup

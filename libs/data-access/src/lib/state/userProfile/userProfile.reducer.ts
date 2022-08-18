@@ -1,17 +1,27 @@
 import { Action, combineReducers } from '@ngrx/store';
 import {
-  createFormGroupState, createFormStateReducerWithUpdate, FormGroupState, updateGroup, validate,
+  createFormGroupState,
+  createFormStateReducerWithUpdate,
+  FormGroupState,
+  updateGroup,
+  validate,
 } from 'ngrx-forms';
-import { required, requiredTrue, maxLength } from 'ngrx-forms/validation';
+import {
+  required,
+  requiredTrue,
+  maxLength,
+  email,
+} from 'ngrx-forms/validation';
 
 export interface FormValues {
-    name: string;
-    surname: string;
-    dateOfBirth: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    agreeToTermsOfUse: boolean,
+  name: string;
+  surname: string;
+  email: string;
+  dateOfBirth: string;
+  street: string;
+  city: string;
+  postalCode: string;
+  agreeToTermsOfUse: boolean;
 }
 
 export interface UserProfileFormState {
@@ -24,28 +34,38 @@ export interface UserProfileFormState {
 export class SetSubmittedValueAction implements Action {
   static readonly TYPE = 'userProfile/SET_SUBMITTED_VALUE';
   readonly type = SetSubmittedValueAction.TYPE;
-  constructor(public submittedValue: FormValues) { }
-} 
+  constructor(public submittedValue: FormValues) {}
+}
 
 export const FORM_ID = 'userProfile';
 
-export const INITIAL_FORM_GROUP_STATE = createFormGroupState<FormValues>(FORM_ID, {
+export const INITIAL_FORM_GROUP_STATE = createFormGroupState<FormValues>(
+  FORM_ID,
+  {
     name: '',
     surname: '',
+    email: '',
     dateOfBirth: new Date(Date.UTC(1970, 0, 1)).toISOString(),
     street: '',
     city: '',
     postalCode: '',
     agreeToTermsOfUse: false,
-});
+  }
+);
 
-const validationFormReducer = createFormStateReducerWithUpdate<FormValues>(updateGroup<FormValues>({
-  name: validate(required, maxLength(20)),
-  surname: validate(required, maxLength(20)),
-  agreeToTermsOfUse:  validate(requiredTrue),
-}))
+const validationFormReducer = createFormStateReducerWithUpdate<FormValues>(
+  updateGroup<FormValues>({
+    name: validate(required, maxLength(20)),
+    surname: validate(required, maxLength(20)),
+    email: validate(email),
+    agreeToTermsOfUse: validate(requiredTrue),
+  })
+);
 
-const userProfileCombineReducers = combineReducers<UserProfileFormState['userProfile'], any>({
+const userProfileCombineReducers = combineReducers<
+  UserProfileFormState['userProfile'],
+  any
+>({
   formState(s = INITIAL_FORM_GROUP_STATE, a: Action) {
     return validationFormReducer(s, a);
   },
@@ -60,6 +80,9 @@ const userProfileCombineReducers = combineReducers<UserProfileFormState['userPro
   },
 });
 
-export function userProfileReducers(s: UserProfileFormState['userProfile'], a: Action) {
+export function userProfileReducers(
+  s: UserProfileFormState['userProfile'],
+  a: Action
+) {
   return userProfileCombineReducers(s, a);
 }
