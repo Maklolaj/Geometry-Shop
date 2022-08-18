@@ -1,103 +1,115 @@
-<p>user-profile works!</p>
-
-<div *ngIf="formState$ | async as formState">
+<div class="user-profile" *ngIf="formState$ | async as formState">
   <form [ngrxFormState]="formState" (submit)="submit()">
-    <!-- Name -->
-    <div>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="User Name"
-          [ngrxFormControlState]="formState.controls.name"
-        />
-        <mat-error *ngIf="formState.errors['_name']?.required">
-          A user name is required
-        </mat-error>
-      </mat-form-field>
+    <div class="user-profile__form">
+      <div class="user-profile__form-column-one">
+        <!-- Name -->
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="User Name"
+            [ngrxFormControlState]="formState.controls.name"
+          />
+          <mat-error *ngIf="formState.errors['_name']?.required">
+            A user name is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Surname -->
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="User Surname"
+            [ngrxFormControlState]="formState.controls.surname"
+          />
+          <mat-error *ngIf="formState.errors['_surname']?.required">
+            A surname is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="someone@example.com"
+            [ngrxFormControlState]="formState.controls.email"
+          />
+          <mat-error *ngIf="formState.errors['_email']?.required">
+            An e-mail is invalid
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Terms Of Use -->
+        <div>
+          <mat-checkbox
+            [ngrxFormControlState]="formState.controls.agreeToTermsOfUse"
+            >Agree to terms of use
+          </mat-checkbox>
+          <mat-error
+            *ngIf="
+              formState.errors['_agreeToTermsOfUse']?.required &&
+              (formState.controls.agreeToTermsOfUse.isTouched ||
+                formState.controls.agreeToTermsOfUse.isSubmitted)
+            "
+            class="user-profile_frorm__terms-of-use-error"
+          >
+            You must agree to the terms of use
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="user-profile__form-column-two">
+        <!-- Street -->
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Sreet"
+            [ngrxFormControlState]="formState.controls.street"
+          />
+        </mat-form-field>
+
+        <!-- City -->
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="City"
+            [ngrxFormControlState]="formState.controls.city"
+          />
+        </mat-form-field>
+
+        <!-- PostalCode -->
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Postal Code"
+            [ngrxFormControlState]="formState.controls.postalCode"
+          />
+        </mat-form-field>
+
+        <!-- Date of birth -->
+
+        <mat-form-field>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Date of Birth"
+            [ngrxFormControlState]="formState.controls.dateOfBirth"
+            [ngrxValueConverter]="dateValueConverter"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
     </div>
 
-    <!-- Surname -->
-    <div>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="User Surname"
-          [ngrxFormControlState]="formState.controls.surname"
-        />
-        <mat-error *ngIf="formState.errors['_surname']?.required">
-          A surname is required
-        </mat-error>
-      </mat-form-field>
-    </div>
-
-    <!-- Terms Of Use -->
-    <div>
-      <mat-checkbox
-        [ngrxFormControlState]="formState.controls.agreeToTermsOfUse"
-        >Agree to terms of use
-      </mat-checkbox>
-      <mat-error
-        *ngIf="
-          formState.errors['_agreeToTermsOfUse']?.required &&
-          (formState.controls.agreeToTermsOfUse.isTouched ||
-            formState.controls.agreeToTermsOfUse.isSubmitted)
-        "
-        class="user-profile_frorm__terms-of-use-error"
-      >
-        You must agree to the terms of use
-      </mat-error>
-    </div>
-
-    <!-- Street -->
-    <div>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Sreet"
-          [ngrxFormControlState]="formState.controls.street"
-        />
-      </mat-form-field>
-    </div>
-
-    <!-- City -->
-    <div>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="City"
-          [ngrxFormControlState]="formState.controls.city"
-        />
-      </mat-form-field>
-    </div>
-
-    <!-- PostalCode -->
-    <div>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Postal Code"
-          [ngrxFormControlState]="formState.controls.postalCode"
-        />
-      </mat-form-field>
-    </div>
-
-    <!-- Date of birth -->
-    <div>
-      <mat-form-field>
-        <input
-          matInput
-          [matDatepicker]="picker"
-          placeholder="Date of Birth"
-          [ngrxFormControlState]="formState.controls.dateOfBirth"
-          [ngrxValueConverter]="dateValueConverter"
-        />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
-
-    <div>
+    <div class="user-profile__form-buttons">
       <button
+        class="user-profile__form-buttons-submit"
         mat-raised-button
         color="primary"
         type="submit"
@@ -106,6 +118,7 @@
         Submit
       </button>
       <button
+        class="user-profile__form-buttons-reset"
         mat-raised-button
         type="button"
         [disabled]="
