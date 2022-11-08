@@ -1,6 +1,10 @@
 
 
-# GeometryShop
+# GeometryShop #
+
+Main goals:
+- Create an app form scratch with a strong focus on all major ngrx mechanisms like store, enity,effects,resolvers etc.
+- Try out the NGT Component Library that wraps around three.js
 
 This project was generated using [Nx](https://nx.dev).
 
